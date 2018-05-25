@@ -1,0 +1,20 @@
+{
+  "name": "cosmix-desktop",
+  "version": "1.0.0",
+  "description": "A desktop application for the Cosmix muon detector",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/lounes-kmt/cosmix-desktop",
+  "keywords": [
+    "detector",
+    "muon",
+    "cosmix"
+  ],
+  "author": "Lounès KSOURI and Killian CLOTAGATIDE",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^2.0.0"
+  }
+}
