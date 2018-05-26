@@ -12,7 +12,7 @@
     "muon",
     "cosmix"
   ],
-  "author": "Lounès KSOURI and Killian CLOTAGATIDE",
+  "author": "Lounes KSOURI and Killian CLOTAGATIDE",
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^2.0.0"
