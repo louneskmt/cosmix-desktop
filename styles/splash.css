@@ -45,6 +45,10 @@ h1{
     line-height: 95%;
     text-transform: uppercase;
 
+    position: absolute;
+    top: 30px;
+    left: 30px;
+
     color: #5F4B8B;
 }
 h3{
