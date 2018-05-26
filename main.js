@@ -7,6 +7,9 @@ const tempsAffichageSplash = 4000;
 
 
 const electron = require('electron')
+const ansi = require("ansi-colors")
+
+console.log(ansi.green("Démarrage du programme"))
 // Module to control application life.
 const app = electron.app
 // Module to create native browser window.
@@ -98,9 +101,11 @@ function splash(){
 }
 
 function switchFromSplashToMain(){
-  return false;
   if(splashWindow === null) return false;
 
   splashWindow.destroy();
   mainWindow.show();
+  console.log(ansi.green("Aucun problème détécté. Page d'accueil ouverte"))
 }
+
+console.log(ansi.yellow("Ouverture du splash"));
