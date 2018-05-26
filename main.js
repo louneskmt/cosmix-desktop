@@ -25,7 +25,7 @@ let splashWindow = null // Variable globale
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 1000, height: 600, show: false})
+  mainWindow = new BrowserWindow({width: 900, height: 600, show: false})
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
