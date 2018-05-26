@@ -25,7 +25,7 @@ let splashWindow = null // Variable globale
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600, show: false})
+  mainWindow = new BrowserWindow({width: 800, height: 600, show: false, titleBarStyle: 'hidden', frame: true, backgroundColor: "#FFF"})
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
@@ -79,7 +79,7 @@ function splash(){
     height: 280,
     movable: false,
     frame: false,
-    resizable: true, //A changer
+    resizable: false,
     hasShadow: false,
     titleBarStyle: "customButtonsOnHover",
     show: false,
@@ -103,8 +103,8 @@ function splash(){
 function switchFromSplashToMain(){
   if(splashWindow === null) return false;
 
+  mainWindow.show();  
   splashWindow.destroy();
-  mainWindow.show();
   console.log(ansi.green("Aucun problème détécté. Page d'accueil ouverte"))
 }
 

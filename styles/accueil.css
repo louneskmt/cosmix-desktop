@@ -4,13 +4,16 @@
 }
 
 html, body{
+    position: relative;
     width: 100%;
     height: 100%;
+    top: 10px;
 
-    margin: 5px 10px 10px 20px;
-    padding: 0;
+    padding: 5px 10px 10px 20px;
+    margin: 0;
 
     font-family: "IBM Plex Sans", "Gill Sans";
+    overflow: hidden;
 }
 
 h1, h3, h4 {
