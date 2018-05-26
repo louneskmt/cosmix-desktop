@@ -3,16 +3,48 @@
   <head>
     <meta charset="UTF-8">
     <title>Cosmix Desktop</title>
+    <link rel="stylesheet" href="styles/accueil.css" />
   </head>
+
   <body>
     <h1>Cosmix Desktop</h1>
-    <h2>Lancer une nouvelle mesure</h2>
-    <form id="nouvelle_mesure">
-      <button id="start">Lancer</button>
-    </form>
+    <h2>Accueil</h2>
+
+    <section>
+      <div id="connectionPanel">
+        <div id="connectionBox"> 
+            <h3>Se connecter au serveur</h3>
+      
+            <form>
+              <label for="url">URL du serveur</label>
+              <input type="text" name="url" id="url">
+      
+              <label for="passwd">Mot de passe</label>
+              <input type="text" name="passwd" id="passwd">
+      
+              <button type="submit" id="buttonConnect">Se connecter</button>
+            </form>
+        </div>
+  
+        <div id="otherOption">
+          <h4>Ou</h4>   
+          <h3>Connexion en USB</h3>   
+        </div>
+      </div>
+        
+      <aside id="recents">
+        <h3>Mesures récentes</h3>
+        <ul>
+          <li>Mesure 1</li>
+          <li>Mesure 2</li>
+          <li>Mesure 3</li>
+          <li>Mesure 4</li>
+        </ul>
+        <h4>Ouvrir un fichier</h4>
+      </aside>
+    </section>
 
     <script>
-      // You can also require other files to run in this process
       require('./renderer.js')
     </script>
   </body>
