@@ -1,0 +1,82 @@
+*{
+    box-sizing: border-box;
+    outline: none;
+}
+
+html, body{
+    width: 100%;
+    height: 100%;
+
+    margin: 5px 10px 10px 20px;
+    padding: 0;
+
+    font-family: "IBM Plex Sans", "Gill Sans";
+}
+
+h1, h3, h4 {
+    color: #604C8D;
+    font-weight: bold;
+    margin: 0;
+}
+
+h1 {
+    font-size: 250%;
+}
+
+h2 {
+    font-weight: normal;
+    text-transform: uppercase;
+
+    margin-top: -10px;
+}
+
+section {
+    display: flex;
+    flex-direction: row;
+}
+
+label {
+    display: block;
+    font-weight: normal;
+    font-size: 70%;
+    margin-bottom: 4px;
+}
+
+#connectionBox {
+    background-color: #ECEBED;
+    position: relative;
+
+    width: 400px;
+    height: 220px;
+    border: solid black 0.5px;
+    border-radius: 7px;
+    padding: 5px 10px;
+}
+
+#connectionBox > h3 {
+    color: black;
+    font-size: 130%;
+    margin-bottom: 15px;
+}
+
+#connectionBox a {
+    color: black;
+    font-weight: normal;
+
+    position: absolute;
+    bottom: 7px;
+}
+
+input {
+    border: none;
+    width: 70%;
+    height: 27px;
+    margin-bottom: 10px;
+}
+
+button {
+    display: block;
+    position: absolute;
+    right: 7px;
+    bottom: 7px;
+}
