@@ -36,6 +36,7 @@ h2 {
 section {
     display: flex;
     flex-direction: row;
+    margin-right: 7%;
 }
 
 label {
@@ -53,13 +54,13 @@ label {
 }
 
 #connectionPanel {
-    width: 70%;
+    width: 60%;
 }
 #connectionBox {
     background-color: #ECEBED;
     position: relative;
 
-    width: 80%;
+    width: 90%;
     height: 220px;
     border: solid black 0.5px;
     border-radius: 7px;
@@ -119,6 +120,8 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: right;
+    align-items: flex-end;
+    margin-right: 10px;
 }
 
 #recents h3 {
