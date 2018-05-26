@@ -15,7 +15,9 @@ html, body{
     font-family: "IBM Plex Sans", "Gill Sans";
     overflow: hidden;
 }
-
+h5{
+    margin: 0;
+}
 h1, h3, h4 {
     color: #604C8D;
     font-weight: bold;
@@ -42,14 +44,14 @@ section {
 label {
     display: block;
     font-weight: normal;
-    font-size: 70%;
+    font-size: 100%;
     margin-bottom: 4px;
 }
 
 #logo {
     position: absolute;
-    bottom: 10px;
-    right: 10px;
+    bottom: 20px;
+    right: 5px;
     width: 30%;
 }
 
@@ -60,11 +62,11 @@ label {
     background-color: #ECEBED;
     position: relative;
 
-    width: 90%;
-    height: 220px;
+    width: 100%;
+    height: 240px;
     border: solid black 0.5px;
     border-radius: 7px;
-    padding: 5px 10px;
+    padding: 10px 15px;
 }
 
 #connectionBox > h3 {
@@ -76,23 +78,34 @@ label {
 #connectionBox a {
     color: black;
     font-weight: normal;
-
-    position: absolute;
-    bottom: 7px;
 }
 
 input {
     border: none;
-    width: 70%;
-    height: 27px;
+    width: 100%;
+    height: 30px;
     margin-bottom: 10px;
 }
 
+
+#connexion-plus{
+    margin-top: 15px;
+}
 button {
-    display: block;
-    position: absolute;
-    right: 7px;
-    bottom: 7px;
+    position: relative;
+    float: right;
+    padding: 5px;
+
+    font-size: 100%;
+    text-transform: uppercase;
+    font-weight: bolder;
+    color: white;
+
+    background: #604C8D;
+    border: none;
+}
+#recentConnection{
+    margin-top: 10px;
 }
 
 #otherOption {
@@ -101,27 +114,35 @@ button {
 }
 
 #otherOption h4 {
-    font-family: "IBM Plex Sans Ultralight", Arial, Helvetica, sans-serif;
+    margin: 10px 0px;
+
+    font-family: "IBM Plex Sans", Arial, Helvetica, sans-serif;
+    font-weight: 100;
     font-size: 150%;
-    margin: 4px 0px;
     text-transform: uppercase;
     color: black;
 }
 
 #otherOption h3 {
-    background-color: #EAEAEA;
-    font-size: 130%;
+    display: inline-block;
     margin: auto;
-    width: 40%;;
+    padding: 10px;
+    
+    font-size: 130%;
+
+    background-color: #EAEAEA;    
 }
 
 #recents {
-    text-align: right;
+    margin-right: 10px;
+    width: 40%;
+    
     display: flex;
     flex-direction: column;
     justify-content: right;
     align-items: flex-end;
-    margin-right: 10px;
+
+    text-align: right;    
 }
 
 #recents h3 {
