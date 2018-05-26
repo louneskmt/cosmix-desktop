@@ -72,8 +72,8 @@ app.on('activate', function () {
 // Fonction pour afficher le splash
 function splash(){
   splashWindow = new BrowserWindow({
-    width: 800,
-    height: 350,
+    width: 600,
+    height: 280,
     movable: false,
     frame: false,
     resizable: true, //A changer
