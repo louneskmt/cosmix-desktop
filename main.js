@@ -1,3 +1,11 @@
+const tempsAffichageSplash = 4000;
+
+
+
+
+/** Début du programme **/
+
+
 const electron = require('electron')
 // Module to control application life.
 const app = electron.app
@@ -10,6 +18,7 @@ const url = require('url')
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
+let splashWindow = null // Variable globale
 
 function createWindow () {
   // Create the browser window.
@@ -32,12 +41,18 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
+
+  mainWindow.on("ready-to-show", function(){
+    switchFromSplashToMain();
+  });
+
+  mainWindow
 }
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', splash)
+app.on('ready', splash) //Démarre un le splash
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
@@ -56,8 +71,9 @@ app.on('activate', function () {
   }
 })
 
+// Fonction pour afficher le splash
 function splash(){
-  var splashWindow = new BrowserWindow({
+  splashWindow = new BrowserWindow({
     width: 800,
     height: 350,
     movable: false,
@@ -71,6 +87,15 @@ function splash(){
     protocol: 'file:',
     slashes: true
   }))
+
+  setTimeout(function () { 
+    createWindow();
+  }, tempsAffichageSplash);
 }
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
+
+function switchFromSplashToMain(){
+  if(splashWindow === null) return false;
+
+  splashWindow.close();
+  mainWindow.show();
+}
