@@ -26,6 +26,7 @@ div.left{
 
     background: url("../sprites/logo.png") #5F4B8B no-repeat center;
     background-size: contain;
+    
 }
 div.right{
     float: right;
@@ -41,13 +42,13 @@ h1,h2,h3,h4,h5,h6{
 }
 
 h1{
-    font-size: 300%;
+    font-size: 320%;
     line-height: 95%;
     text-transform: uppercase;
 
     position: absolute;
-    top: 30px;
-    left: 30px;
+    top: 25px;
+    left: 25px;
 
     color: #5F4B8B;
 }
