@@ -22,7 +22,7 @@ let splashWindow = null // Variable globale
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600})
+  mainWindow = new BrowserWindow({width: 800, height: 600, show: false})
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
@@ -45,8 +45,6 @@ function createWindow () {
   mainWindow.on("ready-to-show", function(){
     switchFromSplashToMain();
   });
-
-  mainWindow
 }
 
 // This method will be called when Electron has finished
@@ -79,8 +77,14 @@ function splash(){
     movable: false,
     frame: false,
     resizable: true, //A changer
-    hasShadow: false
+    hasShadow: false,
+    titleBarStyle: "customButtonsOnHover",
+    show: false,
+    transparent: true
   });
+  splashWindow.on("ready-to-show", function () { 
+    splashWindow.show();
+  })
 
   splashWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'pages/splash.html'),
@@ -94,8 +98,9 @@ function splash(){
 }
 
 function switchFromSplashToMain(){
+  return false;
   if(splashWindow === null) return false;
 
-  splashWindow.close();
+  splashWindow.destroy();
   mainWindow.show();
 }
