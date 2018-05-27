@@ -48,7 +48,7 @@ label {
     margin-bottom: 4px;
 }
 
-#logo {
+#logo_cern {
     position: absolute;
     bottom: 20px;
     right: 5px;
@@ -87,10 +87,10 @@ input {
     margin-bottom: 10px;
 }
 
-
 #connexion-plus{
     margin-top: 15px;
 }
+
 button {
     position: relative;
     float: right;
@@ -104,12 +104,13 @@ button {
     background: #604C8D;
     border: none;
 }
+
 #recentConnection{
     margin-top: 10px;
 }
 
 #otherOption {
-    width: 80%;
+    width: 100%;
     text-align: center;
 }
 
@@ -134,13 +135,15 @@ button {
 }
 
 #recents {
-    margin-right: 10px;
+    position: absolute;
+    right: 35px;
     width: 40%;
     
     display: flex;
     flex-direction: column;
     justify-content: right;
     align-items: flex-end;
+    margin-right: 10px;
 
     text-align: right;    
 }
