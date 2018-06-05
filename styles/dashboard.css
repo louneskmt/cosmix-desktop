@@ -1,6 +1,6 @@
 #nouvelleMesure {
     width: 100%;
-    margin-top: 40px;
+    margin-top: 30px;
     position: relative;
 }
 
@@ -45,4 +45,47 @@ section {
     background-position: -90px -210px;
 
     margin-top: 30px;
+    position: relative;
+}
+
+#graph > h4 {
+    color: grey;
+    font-weight: bold;
+    font-size: 1.3em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    position: absolute;
+    bottom: 1px;
+    right: 5px;
+}
+
+#aide {
+    width: 400px;
+    height: 50px;
+    background-color: #604C8D;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    margin-left: 0;
+}
+
+#aide > h4 {
+    color: white;
+    text-transform: uppercase;
+    font-size: 1.4em;
+}
+
+#titleAndLogo {
+    display: flex;
+    flex-direction: row;
+}
+
+#logo {
+    width: 90px;
+    height: 90px;
 }
