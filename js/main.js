@@ -1,5 +1,5 @@
-const remote = require("remote");
+const {remote} = require("electron");
 
 function hide(){
-
+    remote.getCurrentWindow().minimize();
 }
