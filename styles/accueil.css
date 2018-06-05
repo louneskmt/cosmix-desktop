@@ -11,13 +11,6 @@ label {
     margin-bottom: 4px;
 }
 
-#logo_cern {
-    position: absolute;
-    bottom: 20px;
-    right: 5px;
-    width: 30%;
-}
-
 #connectionPanel {
     width: 60%;
 }
