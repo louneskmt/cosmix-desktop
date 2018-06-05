@@ -15,9 +15,11 @@ html, body{
 
     padding: 5px 10px 10px 20px;
     margin: 0;
-
     font-family: "IBM Plex Sans", "Gill Sans";
+   
     overflow: hidden;
+    background: white;
+    border-radius: 5px;
 }
 
 h1, h3, h4 {
