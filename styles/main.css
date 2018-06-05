@@ -64,7 +64,7 @@ div.closeButtons div{
     height: 13px;
     width: 13px;
 
-    background: black;
+    
     border-radius: 50%; /* Cercle */    
 }
 div#closeButton{
