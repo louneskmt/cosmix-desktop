@@ -105,7 +105,7 @@ function switchFromSplashToMain(){
 
   mainWindow.show();  
   splashWindow.destroy();
-  console.log(ansi.green("Aucun problème détécté. Page d'accueil ouverte"))
+  console.log(ansi.green("Aucun problème détecté. Page d'accueil ouverte..."))
 }
 
 console.log(ansi.yellow("Ouverture du splash"));
