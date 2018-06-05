@@ -30,11 +30,12 @@ function createWindow () {
     width: 900, 
     height: 600, 
     show: false, 
-    titleBarStyle: 'false', 
+    titleBarStyle: 'hidden', 
     frame: false,  
     resizable: false, 
     maximizable: false,
-    hasShadow: false})
+    hasShadow: false
+  })
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
