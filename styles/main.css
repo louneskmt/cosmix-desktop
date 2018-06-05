@@ -40,3 +40,31 @@ h2 {
 h5 {
     margin: 0;
 }
+
+
+/* Boutons titleBar type mac*/
+div.closeButtons{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 13px;
+    width: 100%;
+    padding: 5px;    
+}
+div.closeButtons div{
+    display: inline-block;
+    height: 13px;
+    width: 13px;
+
+    background: black;
+    border-radius: 50%; /* Cercle */    
+}
+div#closeButton{
+    background: red;
+}
+div#minifyButton{
+    background: yellow;
+}
+div#fullscreenButton{
+    background: rgb(129, 209, 8);
+}
