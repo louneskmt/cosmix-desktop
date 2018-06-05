@@ -25,7 +25,7 @@ let splashWindow = null // Variable globale
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 900, height: 600, show: false, titleBarStyle: 'hidden', frame: true, backgroundColor: "#FFF"})
+  mainWindow = new BrowserWindow({width: 900, height: 600, show: false, titleBarStyle: 'customButtonsHover', frame: false, backgroundColor: "#FFF"})
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
