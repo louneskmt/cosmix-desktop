@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "ansi-colors": "^2.0.1",
+    "electron-drag": "^1.2.0",
     "serialport": "^6.2.0",
     "socket.io": "^2.1.1"
   }
