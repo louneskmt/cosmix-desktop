@@ -11,15 +11,18 @@ html, body{
     width: 100%;
     height: 100%;
     
-
-    padding: 10px 10px 10px 20px;
     margin: 0;
+    padding: 0;
     font-family: "IBM Plex Sans", "Gill Sans";
    
     overflow: hidden;
     
     background-color: white;
     border-radius: 10px;
+}
+
+body {
+    padding: 20px 20px 20px 40px;
 }
 
 h1, h3, h4 {
@@ -29,7 +32,7 @@ h1, h3, h4 {
 }
 
 h1 {
-    font-size: 250%;
+    font-size: 300%;
 }
 
 h2 {
@@ -61,8 +64,12 @@ div.closeButtons div{
     height: 12px;
     width: 12px;
 
+<<<<<<< HEAD
     background: black;
     border-radius: 50%; /* Cercle */   
+=======
+    border-radius: 50%; /* Cercle */    
+>>>>>>> f96c6702aeab53cea83a10ec0c87f0e3cdca0d25
 }
 div#closeButton{
     background: red;
@@ -76,7 +83,37 @@ div#fullscreenButton{
 
 #logo_cern {
     position: absolute;
-    bottom: 20px;
+    bottom: 5px;
     right: 5px;
-    width: 30%;
+    width: 25%;
+}
+
+#recents {
+    position: absolute;
+    right: 35px;
+    width: 40%;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    align-items: flex-end;
+    margin-right: 10px;
+
+    text-align: right;    
+}
+
+#recents h3 {
+    font-size: 150%;
+}
+
+#recents ul {
+    list-style: none;
+    font-size: 120%;
+    margin: 2px 0px;
+}
+
+#recents h4 {
+    text-transform: uppercase;
+    margin-top: 10px;
+    font-size: 90%;
 }

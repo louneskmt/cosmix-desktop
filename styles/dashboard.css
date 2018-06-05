@@ -1,0 +1,91 @@
+#nouvelleMesure {
+    width: 100%;
+    margin-top: 30px;
+    position: relative;
+}
+
+#nouvelleMesure > h3 {
+    font-size: 400%;
+    font-family: 'IBM Plex Sans Light';
+    font-weight: normal;
+}
+
+#nouvelleMesure > h4 {
+    text-transform: uppercase;
+    color: black;
+    font-size: 140%;
+    font-weight: bold;
+    margin-top: 5px;
+    left: 3px;
+}
+
+section {
+    display: flex;
+    flex-direction: row;
+    margin-right: 7%;
+}
+
+#ligne {
+    position: absolute;
+    top: 75px;
+    left: 4px;;
+    background: #604C8D;
+    width: 300px;
+    height: 8px;
+}
+
+#graph {
+    width: 500px;
+    height: 200px;
+    border: solid grey 2px;
+    border-radius: 3px;
+    padding: 6px;
+    background: url('../templates/graph_template.png');
+
+    background-position: -90px -210px;
+
+    margin-top: 30px;
+    position: relative;
+}
+
+#graph > h4 {
+    color: grey;
+    font-weight: bold;
+    font-size: 1.3em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    position: absolute;
+    bottom: 1px;
+    right: 5px;
+}
+
+#aide {
+    width: 400px;
+    height: 50px;
+    background-color: #604C8D;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    margin-left: 0;
+}
+
+#aide > h4 {
+    color: white;
+    text-transform: uppercase;
+    font-size: 1.4em;
+}
+
+#titleAndLogo {
+    display: flex;
+    flex-direction: row;
+}
+
+#logo {
+    width: 90px;
+    height: 90px;
+}

@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <title>Cosmix Desktop</title>
     <link rel="stylesheet" href="../styles/main.css" />
+<<<<<<< HEAD
     <link rel="stylesheet" href="../styles/accueil.css" />
     <script src="../js/main.js"></script>
+=======
+    <link rel="stylesheet" href="../styles/dashboard.css">
+    <script src="js/main.js"></script>
+>>>>>>> f96c6702aeab53cea83a10ec0c87f0e3cdca0d25
   </head>
 
   <body>
@@ -14,15 +19,25 @@
       <div id="minifyButton" onclick="hide()"></div>
       <div id="fullscreenButton" onclick="return false;"></div>
     </div>
-    <h1>Cosmix Desktop</h1>
-    <h2>Dashboard</h2>
+
+    <div id="titleAndLogo">
+        <img src="../templates/Logo.png" alt="AppLogo" id="logo" />
+        <div id="title">
+            <h1>Cosmix Desktop</h1>
+            <h2>Dashboard</h2>
+        </div>
+    </div>
+    
 
     <section>
       <div id="nouvelleMesure">
         <h3>Nouvelle mesure</h3>
+        <div id="ligne"></div>
         <h4>Mesure rapide</h4>
 
-        <div id="graph">Dernière mesure</div>
+        <div id="graph">
+            <h4>Dernière mesure</h4>
+        </div>
       </div>
         
       <aside id="recents">
@@ -36,6 +51,10 @@
         <h4>Ouvrir un fichier</h4>
       </aside>
     </section>
+
+    <div id="aide">
+        <h4>Aide explications cosmix</h4>
+    </div>
 
     <a href="http://beamline-for-schools.web.cern.ch" target="_blank"><img src="../sprites/BeamlineCERN_logo.JPG" alt="Logo CERN" id="logo_cern"/></a>
   </body>

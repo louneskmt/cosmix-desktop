@@ -5,6 +5,7 @@ var currentWindow = remote.getCurrentWindow();
 var isMoving = false;
 var originalPosition = {};
 
+<<<<<<< HEAD
 function hide(){
     currentWindow.minimize();
 }
@@ -42,3 +43,17 @@ $(document).ready(function(){
     $(".closeButtons").click(autoMoveWindow);
 
 })
+=======
+function hide() {
+    remote.getCurrentWindow().minimize();
+}
+
+var drag = require('electron-drag');
+ 
+// Pass a query selector or a dom element to the function.
+// Dragging the element will drag the whole window.
+var clear = drag('.closeButtons');
+ 
+// Call the returned function to make the element undraggable again.
+clear();
+>>>>>>> f96c6702aeab53cea83a10ec0c87f0e3cdca0d25

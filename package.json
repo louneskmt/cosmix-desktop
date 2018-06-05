@@ -20,7 +20,11 @@
   },
   "dependencies": {
     "ansi-colors": "^2.0.1",
+<<<<<<< HEAD
     "jquery": "^3.3.1",
+=======
+    "electron-drag": "^1.2.0",
+>>>>>>> f96c6702aeab53cea83a10ec0c87f0e3cdca0d25
     "serialport": "^6.2.0",
     "socket.io": "^2.1.1"
   }

@@ -1,15 +1,11 @@
 const tempsAffichageSplash = 4000;
 
-
-
-
 /** Début du programme **/
-
 
 const electron = require('electron')
 const ansi = require("ansi-colors")
 
-console.log(ansi.green("Démarrage du programme"))
+console.log(ansi.green("Demarrage du programme"))
 // Module to control application life.
 const app = electron.app
 // Module to create native browser window.
@@ -45,7 +41,7 @@ function createWindow () {
   }))
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
@@ -63,7 +59,7 @@ function createWindow () {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', splash) //Démarre un le splash
+app.on('ready', splash) //Démarre le splash
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
@@ -115,7 +111,7 @@ function switchFromSplashToMain(){
 
   mainWindow.show();  
   splashWindow.destroy();
-  console.log(ansi.green("Aucun problème détecté. Page d'accueil ouverte..."))
+  console.log(ansi.green("Aucun probleme detecte. Ouverture de la page d'accueil."))
 }
 
 console.log(ansi.yellow("Ouverture du splash"));
