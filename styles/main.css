@@ -1,4 +1,4 @@
-/* 
+/*
 Main stylesheet
 */
 
@@ -10,19 +10,19 @@ Main stylesheet
 html, body{
     width: 100%;
     height: 100%;
-    
+
     margin: 0;
     padding: 0;
     font-family: "IBM Plex Sans", "Gill Sans";
-   
+
     overflow: hidden;
-    
+
     background-color: white;
     border-radius: 10px;
 }
 
 body {
-    padding: 20px 20px 20px 40px;
+    padding: 25px 20px 20px 20px;
 }
 
 h1, h3, h4 {
@@ -47,6 +47,16 @@ h5 {
 }
 
 
+#titleAndLogo {
+    display: flex;
+    flex-direction: row;
+}
+
+#logo {
+    width: 90px;
+    height: 90px;
+}
+
 /* Boutons titleBar type mac*/
 div.closeButtons{
     position: fixed;
@@ -54,22 +64,20 @@ div.closeButtons{
     left: 0px;
     height: 15px;
     width: 100%;
-    padding: 5px;    
+    padding: 5px;
 
-    cursor: move; 
-    
+    cursor: move;
+    -webkit-app-region: drag;
 }
 div.closeButtons div{
     display: inline-block;
     height: 12px;
     width: 12px;
 
-<<<<<<< HEAD
     background: black;
-    border-radius: 50%; /* Cercle */   
-=======
-    border-radius: 50%; /* Cercle */    
->>>>>>> f96c6702aeab53cea83a10ec0c87f0e3cdca0d25
+    border-radius: 50%; /* Cercle */
+    -webkit-app-region: no-drag;
+    cursor: pointer;
 }
 div#closeButton{
     background: red;
@@ -92,14 +100,14 @@ div#fullscreenButton{
     position: absolute;
     right: 35px;
     width: 40%;
-    
+
     display: flex;
     flex-direction: column;
     justify-content: right;
     align-items: flex-end;
     margin-right: 10px;
 
-    text-align: right;    
+    text-align: right;
 }
 
 #recents h3 {

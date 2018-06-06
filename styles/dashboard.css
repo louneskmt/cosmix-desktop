@@ -6,17 +6,20 @@
 
 #nouvelleMesure > h3 {
     font-size: 400%;
-    font-family: 'IBM Plex Sans Light';
-    font-weight: normal;
+    font-weight: 200;
+
+    cursor: pointer;
 }
 
 #nouvelleMesure > h4 {
+    margin-top: 5px;
+    left: 3px;
+
     text-transform: uppercase;
     color: black;
     font-size: 140%;
     font-weight: bold;
-    margin-top: 5px;
-    left: 3px;
+    cursor: pointer;
 }
 
 section {
@@ -78,14 +81,4 @@ section {
     color: white;
     text-transform: uppercase;
     font-size: 1.4em;
-}
-
-#titleAndLogo {
-    display: flex;
-    flex-direction: row;
-}
-
-#logo {
-    width: 90px;
-    height: 90px;
 }

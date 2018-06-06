@@ -2,35 +2,35 @@ const tempsAffichageSplash = 4000;
 
 /** Début du programme **/
 
-const electron = require('electron')
-const ansi = require("ansi-colors")
+const electron = require('electron');
+const ansi = require("ansi-colors");
 
-console.log(ansi.green("Demarrage du programme"))
+console.log(ansi.green("Demarrage du programme"));
 // Module to control application life.
-const app = electron.app
+const app = electron.app;
 // Module to create native browser window.
-const BrowserWindow = electron.BrowserWindow
+const BrowserWindow = electron.BrowserWindow;
 
-const path = require('path')
-const url = require('url')
+const path = require('path');
+const url = require('url');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow
-let splashWindow = null // Variable globale
+let mainWindow;
+let splashWindow = null; // Variable globale
 
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    transparent: true, 
-    width: 900, 
-    height: 600, 
-    show: false, 
-    titleBarStyle: 'hidden', 
-    frame: false,  
-    resizable: false, 
+    transparent: true,
+    width: 900,
+    height: 600,
+    show: false,
+    titleBarStyle: 'customButtonsOnHover',
+    frame: false,
+    resizable: false,
     maximizable: false,
-    hasShadow: false
+    hasShadow: true
   })
 
   // and load the index.html of the app.
@@ -48,8 +48,8 @@ function createWindow () {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
-    mainWindow = null
-  })
+    mainWindow = null;
+  });
 
   mainWindow.on("ready-to-show", function(){
     switchFromSplashToMain();
@@ -91,17 +91,17 @@ function splash(){
     show: false,
     transparent: true
   });
-  splashWindow.on("ready-to-show", function () { 
+  splashWindow.on("ready-to-show", function () {
     splashWindow.show();
-  })
+  });
 
   splashWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'pages/splash.html'),
     protocol: 'file:',
     slashes: true
-  }))
+  }));
 
-  setTimeout(function () { 
+  setTimeout(function () {
     createWindow();
   }, tempsAffichageSplash);
 }
@@ -109,7 +109,7 @@ function splash(){
 function switchFromSplashToMain(){
   if(splashWindow === null) return false;
 
-  mainWindow.show();  
+  mainWindow.show();
   splashWindow.destroy();
   console.log(ansi.green("Aucun probleme detecte. Ouverture de la page d'accueil."))
 }
