@@ -71,22 +71,40 @@ div.closeButtons{
 }
 div.closeButtons div{
     display: inline-block;
-    height: 12px;
-    width: 12px;
+    height: 13px;
+    width: 13px;
 
-    background: black;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-origin: padding-box;
+    background-size: 0% !important;
     border-radius: 50%; /* Cercle */
+    border: 2px solid transparent;
+
     -webkit-app-region: no-drag;
     cursor: pointer;
 }
 div#closeButton{
-    background: red;
+    background: url("../sprites/closeCross.png");
+
+    background-color: rgb(255, 59, 48);
+
+    border-color: rgb(255, 59, 48);
 }
+
 div#minifyButton{
-    background: yellow;
+    background: url("../sprites/minifyButton.png");
+
+    background-color: rgb(255, 204, 0);
+    border-color: rgb(255, 204, 0);
 }
 div#fullscreenButton{
-    background: rgb(129, 209, 8);
+    /*background-color: rgb(99, 218, 56);
+    border-color: rgb(99, 218, 56);*/
+    background: lightgray;
+}
+div.closeButtons:hover div{
+    background-size: 100% !important;
 }
 
 #logo_cern {
