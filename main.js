@@ -19,9 +19,9 @@ const url = require('url');
 let mainWindow;
 let splashWindow = null; // Variable globale
 
-function createWindow () {
+function createWindow (urlToOpen) {
   // Create the browser window.
-  mainWindow = new BrowserWindow({
+  var newWindow = new BrowserWindow({
     transparent: true,
     width: 900,
     height: 600,
@@ -32,27 +32,31 @@ function createWindow () {
     maximizable: false,
     hasShadow: true
   })
+  console.log(ansi.blue(`Creation de ${urlToOpen}`));
 
   // and load the index.html of the app.
-  mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'pages/dashboard.html'),
+  newWindow.loadURL(url.format({
+    pathname: path.join(__dirname, urlToOpen),
     protocol: 'file:',
     slashes: true
   }))
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools()
+  //mainWindow.webContents.openDevTools();
 
   // Emitted when the window is closed.
-  mainWindow.on('closed', function () {
+  newWindow.on('closed', function () {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     mainWindow = null;
   });
 
-  mainWindow.on("ready-to-show", function(){
-    switchFromSplashToMain();
+  newWindow.on("ready-to-show", function(){
+    newWindow.show();
+    mainWindow.destroy();
+    mainWindow = newWindow;
+    console.log(ansi.green(`Affichage de ${ansi.bold(mainWindow.webContents.getURL())}`));
   });
 }
 
@@ -66,7 +70,8 @@ app.on('window-all-closed', function () {
   // On OS X it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== 'darwin') {
-    app.quit()
+    console.log(ansi.yellow("Fin de l'execution"))
+    app.quit();
   }
 })
 
@@ -74,13 +79,13 @@ app.on('activate', function () {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (mainWindow === null) {
-    createWindow();
+    splash();
   }
 })
 
 // Fonction pour afficher le splash
 function splash(){
-  splashWindow = new BrowserWindow({
+  mainWindow = splashWindow = new BrowserWindow({
     width: 600,
     height: 280,
     movable: false,
@@ -102,16 +107,8 @@ function splash(){
   }));
 
   setTimeout(function () {
-    createWindow();
+    createWindow("pages/dashboard.html");
   }, tempsAffichageSplash);
-}
-
-function switchFromSplashToMain(){
-  if(splashWindow === null) return false;
-
-  mainWindow.show();
-  splashWindow.destroy();
-  console.log(ansi.green("Aucun probleme detecte. Ouverture de la page d'accueil."))
 }
 
 console.log(ansi.yellow("Ouverture du splash"));

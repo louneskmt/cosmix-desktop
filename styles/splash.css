@@ -18,7 +18,7 @@ html, body{
 
 body > div{
     position: relative;
-    height: 100%;    
+    height: 100%;
 }
 div.left{
     float: left;
@@ -26,14 +26,14 @@ div.left{
 
     background: url("../sprites/logo.png") #5F4B8B no-repeat center;
     background-size: contain;
-    
+
 }
 div.right{
     float: right;
     width: 65%;
     padding: 20px;
 
-    background-color: #EEE;    
+    background-color: #EEE;
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -57,7 +57,7 @@ h3{
     opacity: 0.6;
     right: 10px;
     top: 5px;
-    font-weight: normal;  
+    font-weight: normal;
 }
 h6{
     position: fixed;
