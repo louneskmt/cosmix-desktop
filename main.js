@@ -3,6 +3,7 @@ const tempsAffichageSplash = 4000;
 /** Début du programme **/
 
 const electron = require('electron');
+const {ipcMain} = electron;
 const ansi = require("ansi-colors");
 
 console.log(ansi.green("Demarrage du programme"));
@@ -111,4 +112,10 @@ function splash(){
   }, tempsAffichageSplash);
 }
 
+ipcMain.on("newWindowRequest", function (event, urlToOpen) {
+  console.log(ansi.gray(`Request to open ${urlToOpen}`));
+  createWindow(urlToOpen)
+});
+
 console.log(ansi.yellow("Ouverture du splash"));
+
