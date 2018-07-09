@@ -1,24 +1,28 @@
 const tempsAffichageSplash = 4000;
 
+
 /** Début du programme **/
 
 const electron = require('electron');
-const {ipcMain} = electron;
+const {ipcMain, app} = electron;
 const ansi = require("ansi-colors");
 
-logDebug(ansi.green("Demarrage du programme"));
-// Module to control application life.
-const app = electron.app;
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
 
 const path = require('path');
 const url = require('url');
+const fs = require("fs");
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 let splashWindow = null; // Variable globale
+
+
+const logPath = path.resolve(app.getPath("logs") + "/appLog.txt");
+console.log(ansi.gray(`Fichier de débogage : ${logPath} \n`));
+
 
 function createWindow (urlToOpen) {
   // Create the browser window.
@@ -84,8 +88,14 @@ app.on('activate', function () {
   }
 })
 
+app.on('quit', function(){
+  logStream.end(new Date() + " : Fin du processus")
+})
+
 // Fonction pour afficher le splash
 function splash(){
+  logDebug(ansi.yellow("Ouverture du splash"));
+  
   mainWindow = splashWindow = new BrowserWindow({
     width: 600,
     height: 280,
@@ -117,11 +127,22 @@ ipcMain.on("newWindowRequest", function (event, urlToOpen) {
   createWindow(urlToOpen)
 });
 
-logDebug(ansi.yellow("Ouverture du splash"));
+
+var logStream = fs.createWriteStream(logPath, {
+  flags: "w"
+})
 
 
 function logDebug(text, level){
   if(level==undefined) level = 5;
 
   console.log(text);
+
+  var date = new Date();
+  var hour = date.getHours();
+  var mins = date.getMinutes();
+  var secs = date.getSeconds();
+  var msec = date.getMilliseconds();
+  var formattedDate = `[${hour}:${mins}:${secs}.${msec}] `;
+  logStream.write(ansi.unstyle(formattedDate+text+"\n"));
 }
