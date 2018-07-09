@@ -9,48 +9,48 @@
   </head>
 
   <body>
-    <div class="closeButtons">
-      <div id="closeButton" onclick="window.close();"></div>
-      <div id="minifyButton" onclick="hide()"></div>
-      <div id="fullscreenButton" onclick="return false;"></div>
-    </div>
-
-    <div id="titleAndLogo">
-        <img src="../templates/Logo.png" alt="AppLogo" id="logo" />
-        <div id="title">
-            <h1>Cosmix Desktop</h1>
-            <h2>Dashboard</h2>
-        </div>
-    </div>
-
-
-    <section>
-      <div id="nouvelleMesure">
-        <h3>Nouvelle mesure</h3>
-        <div id="ligne"></div>
-        <h4>Mesure rapide</h4>
-
-        <div id="graph">
-            <h4>Dernière mesure</h4>
-        </div>
+    <div class="bodyContainer">
+      <div class="closeButtons">
+        <div id="closeButton" onclick="window.close();"></div>
+        <div id="minifyButton" onclick="hide()"></div>
+        <div id="fullscreenButton" onclick="return false;"></div>
       </div>
-
-      <aside id="recents">
-        <h3>Mesures récentes</h3>
-        <ul>
-          <li>Mesure 1</li>
-          <li>Mesure 2</li>
-          <li>Mesure 3</li>
-          <li>Mesure 4</li>
-        </ul>
-        <h4>Ouvrir un fichier</h4>
-      </aside>
-    </section>
-
-    <div id="aide">
-        <h4>Aide explications cosmix</h4>
+  
+      <div id="titleAndLogo">
+          <img src="../templates/Logo.png" alt="AppLogo" id="logo" />
+          <div id="title">
+              <h1>Cosmix Desktop</h1>
+              <h2>Dashboard</h2>
+          </div>
+      </div>
+  
+  
+      <section>
+        <div id="nouvelleMesure">
+          <h3>Nouvelle mesure</h3>
+          <div id="ligne"></div>
+          <button class="invisible_bg">Mesure rapide</button>
+  
+          <div id="graph">
+              <h4>Dernière mesure</h4>
+          </div>
+        </div>
+  
+        <aside id="recents">
+          <h3>Mesures récentes</h3>
+          <ul>
+            <li>Mesure 1</li>
+            <li>Mesure 2</li>
+            <li>Mesure 3</li>
+            <li>Mesure 4</li>
+          </ul>
+          <button class="invisible_bg">Ouvrir un fichier</button>
+        </aside>
+      </section>
+  
+      <button class="heavy aide">Aide explications Cosmix</button>
+  
+      <a href="http://beamline-for-schools.web.cern.ch" target="_blank"><img src="../sprites/BeamlineCERN_logo.JPG" alt="Logo CERN" id="logo_cern"/></a>
     </div>
-
-    <a href="http://beamline-for-schools.web.cern.ch" target="_blank"><img src="../sprites/BeamlineCERN_logo.JPG" alt="Logo CERN" id="logo_cern"/></a>
   </body>
 </html>

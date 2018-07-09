@@ -17,13 +17,10 @@ html, body{
 
     overflow: hidden;
 
-    background-color: white;
+    background-color: transparent;
     border-radius: 10px;
 }
 
-body {
-    padding: 25px 20px 20px 20px;
-}
 
 h1, h3, h4 {
     color: #604C8D;
@@ -116,4 +113,32 @@ div.closeButtons:hover div{
 
 button{
     cursor: pointer;
+
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: inherit;
+    font-size: 110%;
+
+    color: white;
+    background-color: #604C8D;    
+    border: none;
+}
+button.invisible_bg{
+    margin: 5px 0;
+    padding: 0;
+    padding-left: 3px;
+
+    color: #604C8D;
+    
+    background: transparent;
+}
+
+.bodyContainer{
+    width: 100%;
+    height: 100%;
+    padding: 25px 20px 20px 20px;
+
+
+    background: #FFF;
+    border-radius: 5px;
 }

@@ -11,16 +11,6 @@
     cursor: pointer;
 }
 
-#nouvelleMesure > h4 {
-    margin-top: 5px;
-    left: 3px;
-
-    text-transform: uppercase;
-    color: black;
-    font-size: 140%;
-    font-weight: bold;
-    cursor: pointer;
-}
 
 section {
     display: flex;
@@ -62,14 +52,9 @@ section {
     right: 5px;
 }
 
-#aide {
+.aide {
     width: 400px;
     height: 50px;
-    background-color: #604C8D;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
 
     position: absolute;
     bottom: 15px;
@@ -77,11 +62,6 @@ section {
     margin-left: 0;
 }
 
-#aide > h4 {
-    color: white;
-    text-transform: uppercase;
-    font-size: 1.4em;
-}
 
 #recents {
     position: absolute;

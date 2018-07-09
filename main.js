@@ -6,7 +6,7 @@ const electron = require('electron');
 const {ipcMain} = electron;
 const ansi = require("ansi-colors");
 
-console.log(ansi.green("Demarrage du programme"));
+logDebug(ansi.green("Demarrage du programme"));
 // Module to control application life.
 const app = electron.app;
 // Module to create native browser window.
@@ -33,7 +33,7 @@ function createWindow (urlToOpen) {
     maximizable: false,
     hasShadow: true
   })
-  console.log(ansi.blue(`Creation de ${urlToOpen}`));
+  logDebug(ansi.gray(`Creation de ${urlToOpen}`));
 
   // and load the index.html of the app.
   newWindow.loadURL(url.format({
@@ -57,7 +57,7 @@ function createWindow (urlToOpen) {
     newWindow.show();
     mainWindow.destroy();
     mainWindow = newWindow;
-    console.log(ansi.green(`Affichage de ${ansi.bold(mainWindow.webContents.getURL())}`));
+    logDebug(ansi.green(`Affichage de ${ansi.bold(mainWindow.webContents.getURL())}`));
   });
 }
 
@@ -71,7 +71,7 @@ app.on('window-all-closed', function () {
   // On OS X it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== 'darwin') {
-    console.log(ansi.yellow("Fin de l'execution"))
+    logDebug(ansi.yellow("Fin de l'execution"))
     app.quit();
   }
 })
@@ -113,9 +113,15 @@ function splash(){
 }
 
 ipcMain.on("newWindowRequest", function (event, urlToOpen) {
-  console.log(ansi.gray(`Request to open ${urlToOpen}`));
+  logDebug(ansi.gray(`Request to open ${urlToOpen}`));
   createWindow(urlToOpen)
 });
 
-console.log(ansi.yellow("Ouverture du splash"));
+logDebug(ansi.yellow("Ouverture du splash"));
 
+
+function logDebug(text, level){
+  if(level==undefined) level = 5;
+
+  console.log(text);
+}
