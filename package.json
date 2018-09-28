@@ -15,13 +15,13 @@
   "author": "Lounes KSOURI and Killian CLOTAGATIDE",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^2.0.2",
-    "electron-rebuild": "^1.7.3"
+    "electron": "^2.0.10",
+    "electron-rebuild": "^1.8.2"
   },
   "dependencies": {
-    "ansi-colors": "^2.0.1",
+    "ansi-colors": "^2.0.5",
     "jquery": "^3.3.1",
-    "serialport": "^6.2.0",
+    "serialport": "^6.2.2",
     "socket.io": "^2.1.1"
   }
 }
