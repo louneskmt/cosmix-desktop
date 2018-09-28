@@ -118,7 +118,8 @@ function splash(){
   }));
 
   setTimeout(function () {
-    createWindow("pages/dashboard.html");
+    // TO SHOW
+    createWindow("pages/livepanel.html");
   }, tempsAffichageSplash);
 }
 

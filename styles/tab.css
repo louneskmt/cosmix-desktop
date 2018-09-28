@@ -1,0 +1,31 @@
+header{
+    display: inline-block;
+    height: 40px;
+    width: 50%;
+}
+h1{
+    padding: 0;
+    padding-left: 10px;
+    display: inline-block;
+    font-size: 240%;
+}
+.backButton{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: #604C8D;    
+}
+aside{
+    position: relative;
+    float: left;
+
+    height: 100%;
+    width: 30%;
+
+}
+aside.big{
+    width: 70%;
+}
+aside.right{
+    float: right;
+}

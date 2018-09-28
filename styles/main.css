@@ -142,3 +142,19 @@ button.invisible_bg{
     background: #FFF;
     border-radius: 5px;
 }
+.bodyContainer.noPad{
+    padding: 0;
+}
+.padContainer{  
+    padding: 25px 20px 20px 20px;
+}
+
+.posRelative{
+    position: relative;
+}
+.floatLeft{
+    float: left;
+}
+.floatRight{
+    float: right;
+}
