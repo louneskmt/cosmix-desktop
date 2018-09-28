@@ -19,9 +19,10 @@
     "electron-rebuild": "^1.8.2"
   },
   "dependencies": {
-    "ansi-colors": "^2.0.5",
+    "ansi-colors": "^3.1.0",
     "jquery": "^3.3.1",
-    "serialport": "^6.2.2",
+    "npm": "^6.4.1",
+    "serialport": "^7.0.2",
     "socket.io": "^2.1.1"
   }
 }

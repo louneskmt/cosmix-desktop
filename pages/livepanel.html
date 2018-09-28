@@ -1,82 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>LivePanel</title>
-    <link rel="stylesheet" href="../styles/main.css" />
-    <link rel="stylesheet" href="../styles/tab.css" />
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="../js/main.js"></script>
-    <script src="../js/app.js"></script>
-    <script src="../js/snap-svg.js"></script>
-    <script src="../js/graph.js"></script>
-    
-</head>
-<body>
-    <div class="bodyContainer noPad">
-        <div class="closeButtons">
-            <div id="closeButton" onclick="window.close();"></div>
-            <div id="minifyButton" onclick="hide()"></div>
-            <div id="fullscreenButton" onclick="return false;"></div>
-        </div>
-        <aside class="padContainer big posRelative floatLeft">
-            <header>
-                <div class="backButton sprite-backArrow"></div>
-                <h1>LivePanel</h1>
-            </header>
-            
-            <svg class="graph marTop10" viewBox="0 0 1000 1000"> 
-                <!-- 
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>LivePanel</title>
+        <link rel="stylesheet" href="../styles/main.css" />
+        <link rel="stylesheet" href="../styles/tab.css" />
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="../js/main.js"></script>
+        <script src="../js/app.js"></script>
+        <script src="../js/snap-svg.js"></script>
+        <script src="../js/graph.js"></script>
+
+    </head>
+    <body>
+        <div class="bodyContainer noPad">
+            <div class="closeButtons">
+                <div id="closeButton" onclick="window.close();"></div>
+                <div id="minifyButton" onclick="hide()"></div>
+                <div id="fullscreenButton" onclick="return false;"></div>
+            </div>
+            <aside class="padContainer big posRelative floatLeft">
+                <header>
+                    <div class="backButton sprite-backArrow"></div>
+                    <h1>LivePanel</h1>
+                </header>
+
+                <svg class="graph marTop10" viewBox="0 0 1000 1000">
+                    <!-- 
                     ViewBox permet de travailler avec des dimensions fictives, peu importante la taille finale.
                     x=0 y=0 w=1000 h=1000
                 -->
-                
-            </svg>
-            
-            <h3 class="math">x&#772 = 37 <label>&cap;/s</label></h3>
-        </aside>
-        <aside class="right tar">
-            <table class="tableTabs">
-                <tr>
-                    <td>
-                        <h5>Status</h5>
-                        <h2>ON</h2>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="posRelative floatLeft">
-                            <h3 class="marTop5 marBottom5 colGreen">1024</h3>
-                            <h3 class="marTop5 marBottom5 colOrange">2048</h3>
-                            <h6 class="small marTop5">Total</h6>
-                            <h3 class="marBottom5 colBlack">3072</h3>
-                        </div>
-                        <div class="posRelative floatRight">
-                            <h5>Mesures</h5>
-                            <h6>&cap;</h6>
-                            <h2>876</h2>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="selected">
-                        <h5>Vitesse</h5>
-                        <h2>12 <label>&cap;/s</label></h2>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <h5>Autres</h5>
-                        <kbd>T=12°C</kbd>
-                        <kbd>A=123m</kbd>
-                        <kbd>GPSx=103943</kbd>
-                        <kbd>GPSy=103943</kbd>
-                    </td>
-                </tr>
-            </table>
-        </aside>
-    </div>
-</body>
+                </svg>
+
+                <h3 class="math">x&#772 = 37 <label>&cap;/s</label></h3>
+            </aside>
+            <aside class="right tar">
+                <table class="tableTabs">
+                    <tr>
+                        <td>
+                            <h5>Status</h5>
+                            <h2>ON</h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="posRelative floatLeft">
+                                <h3 class="marTop5 marBottom5 colGreen">1024</h3>
+                                <h3 class="marTop5 marBottom5 colOrange">2048</h3>
+                                <h6 class="small marTop5">Total</h6>
+                                <h3 class="marBottom5 colBlack">3072</h3>
+                            </div>
+                            <div class="posRelative floatRight">
+                                <h5>Mesures</h5>
+                                <h6>&cap;</h6>
+                                <h2>876</h2>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="selected">
+                            <h5>Vitesse</h5>
+                            <h2>12 <label>&cap;/s</label></h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5>Autres</h5>
+                            <kbd>T=12°C</kbd>
+                            <kbd>A=123m</kbd>
+                            <kbd>GPSx=103943</kbd>
+                            <kbd>GPSy=103943</kbd>
+                        </td>
+                    </tr>
+                </table>
+            </aside>
+        </div>
+    </body>
 </html>
