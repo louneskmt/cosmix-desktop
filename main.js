@@ -31,7 +31,7 @@ function createWindow (urlToOpen) {
     width: 900,
     height: 600,
     show: false,
-    titleBarStyle: 'customButtonsOnHover',
+    titleBarStyle: 'none',
     frame: false,
     resizable: false,
     maximizable: false,
@@ -103,7 +103,7 @@ function splash(){
     frame: false,
     resizable: false,
     hasShadow: false,
-    titleBarStyle: "customButtonsOnHover",
+    titleBarStyle: "none",
     show: false,
     transparent: true
   });
@@ -132,6 +132,7 @@ ipcMain.on("newWindowRequest", function (event, urlToOpen) {
 var logStream = fs.createWriteStream(logPath, {
   flags: "w"
 })
+logDebug(new Date()+ " : Début de l'éxécution")
 
 
 function logDebug(text, level){

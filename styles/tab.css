@@ -26,6 +26,44 @@ aside{
 aside.big{
     width: 70%;
 }
-aside.right{
-    float: right;
+.tableTabs{
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+
+}
+
+.tableTabs td{
+    border: 1px solid #604C8D;
+    border-right: none;
+    padding: 10px;
+    cursor: pointer;
+}
+.tableTabs td.selected{
+    border-left: none;
+}
+
+.tableTabs td h5{
+    font-size: 130%;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.tableTabs td h2{
+    font-size: 300%;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #604C8D;
+}
+.tableTabs td h3{
+    font-size: 150%;
+}
+.tableTabs td h6{
+    font-size: 100%;
+}
+.tableTabs td h6.small{
+    font-size: 50%;
+}
+.tableTabs kbd{
+    display: block;
+    font-size: 150%;
 }
