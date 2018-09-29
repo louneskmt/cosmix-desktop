@@ -13,3 +13,4 @@ function hide() {
 function openWindow(urlToOpen){
     ipcRenderer.send("newWindowRequest", urlToOpen);
 }
+

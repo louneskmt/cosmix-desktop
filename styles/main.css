@@ -82,6 +82,7 @@ div.closeButtons{
     height: 15px;
     width: 100%;
     padding: 5px;
+    z-index: 99;
 
     cursor: move;
     -webkit-app-region: drag;
@@ -161,6 +162,7 @@ button.invisible_bg{
 
     background: #FFF;
     border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)
 }
 .bodyContainer.noPad{
     padding: 0;
