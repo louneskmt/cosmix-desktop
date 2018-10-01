@@ -1,5 +1,5 @@
 const io = require('socket.io-client');
-var socket = io.connect('localhost');
+var socket = io.connect('0.0.0.0');
 
 // Variables
 var currentStatus = "ON";
