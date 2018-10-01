@@ -1,5 +1,5 @@
 const io = require('socket.io-client');
-var socket = io.connect('http://41.213.190.93');
+var socket = io.connect('localhost');
 
 // Variables
 var currentStatus = "ON";
@@ -25,6 +25,7 @@ socket.on('newData', function(message) {
 
     eventsC1 += data.newEventsC1;
     eventsC2 += data.newEventsC2;
+    currentStatus = data.status;
 
     updateCounters();
 });
