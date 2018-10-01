@@ -25,4 +25,6 @@ socket.on('newData', function(message) {
 
     eventsC1 += data.newEventsC1;
     eventsC2 += data.newEventsC2;
+
+    updateCounters();
 });
