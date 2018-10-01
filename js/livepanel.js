@@ -1,9 +1,11 @@
+const io = require('socket.io-client');
+var socket = io.connect('http://41.213.190.93');
+
 // Variables
 var currentStatus = "ON";
 var coincidences = 0;
 var eventsC1 = 04;
 var eventsC2 = 10;
-var totalEvents = eventsC1 + eventsC2;
 
 // Elements DOM
 var statusElt = document.getElementById('currentStatus');
@@ -15,7 +17,12 @@ function updateCounters() {
     statusElt.textContent = currentStatus;
     C1EventsElt.textContent = eventsC1;
     C2EventsElt.textContent = eventsC2;
-    totalEventsElt.textContent = totalEvents;
+    totalEventsElt.textContent = eventsC1 + eventsC2;
 }
 
-updateCounters();
+socket.on('newData', function(message) {
+    data = JSON.parse(message);
+
+    eventsC1 += data.newEventsC1;
+    eventsC2 += data.newEventsC2;
+});
