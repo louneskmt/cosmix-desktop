@@ -11,6 +11,7 @@ h1{
 }
 .backButton{
     display: inline-block;
+
     width: 40px;
     height: 40px;
     background-color: #604C8D;    
@@ -33,7 +34,7 @@ aside.big{
 
 }
 
-#tableTabsStatus {
+.tableTabs td:first-child {
     border: 1px solid #604C8D;
     border-top: 0;
     border-right: 0;
