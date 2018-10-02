@@ -88,7 +88,7 @@ $(document).ready(function(){
         eventsObject.coincidences += data.newCoincidence;
         currentStatus = data.status;
         
-        speed = data.newCoincidence / 2;
+        speed = data.newCoincidence;
         averageObject.speedArray.push(speed);
         var pointsToHide = averageObject.speedArray.length>10?1:0; // Déplace le graphique d'un point à partir de 10 valeurs
         speedGraph.flow({
@@ -102,7 +102,4 @@ $(document).ready(function(){
         
         updateDisplay();
     });
-
-
-    
 });
