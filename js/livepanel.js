@@ -42,7 +42,7 @@ $(document).ready(function(){
         bindto: '#speedGraph',
         data: {
           columns: [
-            ['Vitesse', 0]
+            ['Speed', 0]
           ]
         },
         grid: {
@@ -92,7 +92,7 @@ $(document).ready(function(){
         averageObject.speedArray.push(speed);
         var pointsToHide = averageObject.speedArray.length>10?1:0; // Déplace le graphique d'un point à partir de 10 valeurs
         speedGraph.flow({
-            columns: [["Vitesse", speed]],
+            columns: [["Speed", speed]],
             length: pointsToHide // ==> Enlever x points pour afficher la nouvelle valeur
         })
 
