@@ -233,6 +233,7 @@ button.invisible_bg{
 .modal {
     display: none;
     position: fixed;
+    z-index: 91;
     left: 0;
     top: 0;
     width: 100%;
