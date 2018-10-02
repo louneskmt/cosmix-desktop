@@ -4,6 +4,7 @@ $(document).ready(function () {
     const io = require('socket.io-client');
     var socket = io.connect('http://' + serverIP);
 
+
     const c3 = require("c3"); // Module pour les graphiques
 
     // Variables et objets
@@ -106,11 +107,27 @@ $(document).ready(function () {
     var e_modal = document.getElementById('statusBox');
     var span = document.getElementsByClassName("close")[0];
     var e_serverIP = $('#serverIP');
+    var e_connectionStatus = $('#connectionStatus');
 
-    $(e_currentStatus).on('click', function() {
+    $(e_currentStatus).on('click', function () {
         e_modal.style.display = "block";
 
         $(e_serverIP).text(serverIP);
+
+        if (socket.connected) $(e_connectionStatus).text("CONNECTED");
+        else $(e_connectionStatus).text("DISCONNECTED");
+
+        var startTime;
+        
+        setInterval(function () {
+            startTime = Date.now();
+            socket.emit('ping');
+        }, 2000);
+
+        socket.on('pong', function () {
+            latency = Date.now() - startTime;
+            console.log(latency);
+        });
     });
 
     span.onclick = function () {
@@ -122,26 +139,4 @@ $(document).ready(function () {
             e_modal.style.display = "none";
         }
     };
-
-
-    /*
-    function statusAlert() {
-        var div = $('<div>');
-        div.html('Test');
-        div.attr('Status Informations');
-        div.dialog({
-            autoOpen: true,
-            modal: true,
-            draggable: false,
-            resizable: false,
-            buttons: [{
-                text: 'Quit',
-                click: function () {
-                    $(this).dialog("close");
-                    div.remove();
-                }
-            }]
-        });
-    }
-    */
 });
