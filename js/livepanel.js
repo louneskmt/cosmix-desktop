@@ -1,7 +1,8 @@
 $(document).ready(function () {
     // Appel du socket et connexion au serveur
+    serverIP = '41.213.190.93';
     const io = require('socket.io-client');
-    var socket = io.connect('http://41.213.190.93');
+    var socket = io.connect('http://' + serverIP);
 
     const c3 = require("c3"); // Module pour les graphiques
 
@@ -104,9 +105,12 @@ $(document).ready(function () {
     // Get the modal
     var e_modal = document.getElementById('statusBox');
     var span = document.getElementsByClassName("close")[0];
+    var e_serverIP = $('#serverIP');
 
     $(e_currentStatus).on('click', function() {
         e_modal.style.display = "block";
+
+        $(e_serverIP).text(serverIP);
     });
 
     span.onclick = function () {
