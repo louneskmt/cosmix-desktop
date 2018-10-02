@@ -108,26 +108,26 @@ $(document).ready(function () {
     var span = document.getElementsByClassName("close")[0];
     var e_serverIP = $('#serverIP');
     var e_connectionStatus = $('#connectionStatus');
+    var e_latency = $('#latency');
+    var startTime;
+
+    setInterval(function () {
+        if (socket.connected) $(e_connectionStatus).text("CONNECTED");
+        else $(e_connectionStatus).text("DISCONNECTED");
+
+        startTime = Date.now();
+        socket.emit('ping');
+    }, 1000);
+
+    socket.on('pong', function () {
+        latency = Date.now() - startTime;
+        $(e_latency).text(latency);
+    });
 
     $(e_currentStatus).on('click', function () {
         e_modal.style.display = "block";
 
         $(e_serverIP).text(serverIP);
-
-        if (socket.connected) $(e_connectionStatus).text("CONNECTED");
-        else $(e_connectionStatus).text("DISCONNECTED");
-
-        var startTime;
-        
-        setInterval(function () {
-            startTime = Date.now();
-            socket.emit('ping');
-        }, 2000);
-
-        socket.on('pong', function () {
-            latency = Date.now() - startTime;
-            console.log(latency);
-        });
     });
 
     span.onclick = function () {
