@@ -11,6 +11,7 @@ function hide() {
 }
 
 function openWindow(urlToOpen){
+    $(".bodyContainer").addClass("dark");
     ipcRenderer.send("newWindowRequest", urlToOpen);
 }
 

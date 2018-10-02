@@ -23,7 +23,7 @@
             </div>
             <aside class="padContainer big posRelative floatLeft">
                 <header>
-                    <div class="backButton sprite-backArrow"></div>
+                    <div class="backButton sprite-backArrow" onclick="openWindow(`/pages/dashboard.html`)"></div>
                     <h1>LivePanel</h1>
                 </header>
 
@@ -77,14 +77,13 @@
                 </table>
             </aside>
             <div id="statusBox" class="modal">
-                <div class="statusBox-content">
+                <div>
                   <span class="close">&times;</span>
                   <h2>Connection Informations</h2>
                   <p>Status : <span id="connectionStatus">CONNECTED</span></p>
                   <p>Ping : <span id="ping">----</span></p>
                   <p>Server's IP : <span id="serverIP">----</span></p>
                 </div>
-              
               </div>
         </div>
     </body>
