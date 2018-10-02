@@ -1,10 +1,10 @@
-$(document).ready(function(){
+$(document).ready(function () {
     // Appel du socket et connexion au serveur
     const io = require('socket.io-client');
     var socket = io.connect('http://41.213.190.93');
 
     const c3 = require("c3"); // Module pour les graphiques
-    
+
     // Variables et objets
     var currentStatus = "OFF";
     var eventsObject = {
@@ -24,7 +24,7 @@ $(document).ready(function(){
         GPSy: 0
     }
     var speed = 0;
-    
+
     // Création des élements DOM
     // CONVENTION : e_{ID-DE-ELEMENT} pour désigner un objet DOM jQuery
     var e_currentStatus = $('#currentStatus');
@@ -41,9 +41,9 @@ $(document).ready(function(){
     speedGraph = c3.generate({
         bindto: '#speedGraph',
         data: {
-          columns: [
-            ['Speed', 0]
-          ]
+            columns: [
+                ['Speed', 0]
+            ]
         },
         grid: {
             x: {
@@ -55,12 +55,10 @@ $(document).ready(function(){
         }
     });
 
-    
-    
     // Fonction de mise à jour de l'affichage
     function updateDisplay() {
         $(e_currentStatus).text(currentStatus);
-        if(currentStatus=="ON") $(e_currentStatus).removeClass("colOrange");
+        if (currentStatus == "ON") $(e_currentStatus).removeClass("colOrange");
         else $(e_currentStatus).addClass("colOrange");
 
         $(e_eventsC1).text(eventsObject.eventsC1);
@@ -69,7 +67,7 @@ $(document).ready(function(){
         $(e_coincidences).text(eventsObject.coincidences);
         $(e_speed).text(speed);
 
-        var averageSpeed = Math.round(averageObject.average * 10) / 10; 
+        var averageSpeed = Math.round(averageObject.average * 10) / 10;
         $(e_average).text(averageSpeed);
         speedGraph.ygrids([{
             value: averageSpeed,
@@ -77,29 +75,69 @@ $(document).ready(function(){
             class: "math"
         }]);
     }
-    
+
     // Quand un message de type 'newData' est reçu, ajout des nouvelles valeurs,
     // calcul de la vitesse puis appel de la fonction de mise à jour de l'affichage
-    socket.on('newData', function(message) {
+    socket.on('newData', function (message) {
         data = JSON.parse(message);
-        
+
         eventsObject.eventsC1 += data.newEventsC1;
         eventsObject.eventsC2 += data.newEventsC2;
         eventsObject.coincidences += data.newCoincidence;
         currentStatus = data.status;
-        
+
         speed = data.newCoincidence;
         averageObject.speedArray.push(speed);
-        var pointsToHide = averageObject.speedArray.length>10?1:0; // Déplace le graphique d'un point à partir de 10 valeurs
+        var pointsToHide = averageObject.speedArray.length > 10 ? 1 : 0; // Déplace le graphique d'un point à partir de 10 valeurs
         speedGraph.flow({
             columns: [["Speed", speed]],
             length: pointsToHide // ==> Enlever x points pour afficher la nouvelle valeur
         })
 
-        
+
         averageObject.somme += speed;
         averageObject.average = averageObject.somme / averageObject.speedArray.length;
-        
+
         updateDisplay();
     });
+
+    // Get the modal
+    var e_modal = document.getElementById('statusBox');
+    var span = document.getElementsByClassName("close")[0];
+
+    $(e_currentStatus).on('click', function() {
+        e_modal.style.display = "block";
+    });
+
+    span.onclick = function () {
+        e_modal.style.display = "none";
+    }
+
+    window.onclick = function (event) {
+        if (event.target == e_modal) {
+            e_modal.style.display = "none";
+        }
+    };
+
+
+    /*
+    function statusAlert() {
+        var div = $('<div>');
+        div.html('Test');
+        div.attr('Status Informations');
+        div.dialog({
+            autoOpen: true,
+            modal: true,
+            draggable: false,
+            resizable: false,
+            buttons: [{
+                text: 'Quit',
+                click: function () {
+                    $(this).dialog("close");
+                    div.remove();
+                }
+            }]
+        });
+    }
+    */
 });
