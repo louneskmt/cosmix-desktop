@@ -119,7 +119,7 @@ function splash(){
 
   setTimeout(function () {
     // TO SHOW
-    createWindow("pages/livepanel.html");
+    createWindow("pages/dashboard.html");
   }, tempsAffichageSplash);
 }
 
