@@ -7,10 +7,11 @@
         <title>LivePanel</title>
         <link rel="stylesheet" href="../styles/main.css" />
         <link rel="stylesheet" href="../styles/tab.css" />
-        <script src="/socket.io/socket.io.js"></script>
+        <link rel="stylesheet" href="../styles/graph.css" />
+        <!-- UTILE?? <script src="/socket.io/socket.io.js"></script> -->
         <script src="../js/main.js"></script>
         <script src="../js/snap-svg.js"></script>
-        <script src="../js/graph.js"></script>
+        <script src="../js/livepanel.js"></script>
 
     </head>
     <body>
@@ -26,12 +27,12 @@
                     <h1>LivePanel</h1>
                 </header>
 
-                <svg class="graph marTop10" viewBox="0 0 1000 1000">
+                <div class="graph marTop10" id="speedGraph" viewBox="0 0 1000 1000">
                     <!-- 
                     ViewBox permet de travailler avec des dimensions fictives, peu importante la taille finale.
                     x=0 y=0 w=1000 h=1000
                 -->
-                </svg>
+                </div>
 
                 <h3 class="math">x&#772 = <span id="average">--</span> <label> &cap;/s</label></h3>
             </aside>
@@ -78,5 +79,4 @@
         </div>
     </body>
 
-    <script src="../js/livepanel.js"></script>
 </html>

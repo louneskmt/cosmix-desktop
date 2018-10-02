@@ -1,0 +1,24 @@
+.graph{
+    width: 590px;
+    height: 400px;
+    background: #EFEFEF;
+    border-radius: 5px;
+}
+
+.graph .c3-chart-line{
+    fill: none;
+}
+
+.graph .domain{ /* For the axis */
+    fill: none;
+}
+
+.graph .c3-ygrid, .graph .c3-xgrid{ /* Quadrillage */
+    stroke: white;
+    stroke-width: 1;
+    stroke-dasharray: 5;
+}
+
+.graph .c3-ygrid-line line{
+    stroke: red;
+}
