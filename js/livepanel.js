@@ -156,7 +156,6 @@ $(document).ready(function () {
         currentTab = 'measurements';
         $('.selected').removeClass('selected');
         $(e_measurementsDiv).addClass('selected');
-        $(e_measurementsDiv).style.display = "block";
         
     });
     $(e_speedDiv).on('click', function() {
