@@ -154,23 +154,27 @@ $(document).ready(function () {
 
     $(e_measurementsDiv).on('click', function() {
         currentTab = 'measurements';
-        $('.selected').removeClass('selected');
-        $(e_measurementsDiv).addClass('selected');
-        
+        updateTab(e_measurementsTab, e_measurementsDiv);
     });
     $(e_speedDiv).on('click', function() {
         currentTab = 'speed';
-        $('.selected').removeClass('selected');
-        $(e_speedDiv).addClass('selected');
+        updateTab(e_speedTab, e_speedDiv);
     });
     $(e_otherDiv).on('click', function() {
         currentTab = 'other';
-        $('.selected').removeClass('selected');
-        $(e_otherDiv).addClass('selected');
+        updateTab(e_otherTab, e_otherDiv);
     });
     $(e_statusDiv).on('click', function() {
         currentTab = 'status';
-        $('.selected').removeClass('selected');
-        $(e_statusDiv).addClass('selected');
+        updateTab(e_statusTab, e_statusDiv);
     });
+
+    function updateTab(newTabToDisplay, currentDiv) {
+        $('.currentTab').css('display', 'none');
+        $('.currentTab').removeClass('currentTab');
+        $('.selected').removeClass('selected');
+        $(currentDiv).addClass('selected');
+        $(newTabToDisplay).addClass('currentTab');
+        $(newTabToDisplay).css('display', 'block');
+    }
 });
