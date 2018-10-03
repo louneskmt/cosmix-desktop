@@ -96,9 +96,21 @@
                     </tr>
                 </table>
             </aside>
-            <div id="statusBox" class="modal">
+            <div id="serverIPBox" class="modal">
                 <div>
                     <span class="close">&times;</span>
+                    <h2>Start new measurement</h2>
+                    <form action="">
+                        <p>
+                            IP du serveur :
+                            <input type="text" name="inputServerIP" id="inputServerIP" placeholder="41.213.190.93" size="15">
+                        </p>
+                        <p>
+                            Port :
+                            <input type="text" name="inputServerIP" id="inputServerPort" placeholder="80" size="5">
+                        </p>
+                        <button type="submit" id="connectButton">Connect</button>
+                    </form>
                 </div>
             </div>
         </div>

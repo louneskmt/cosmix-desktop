@@ -1,9 +1,37 @@
 $(document).ready(function () {
-    // Appel du socket et connexion au serveur
-    serverIP = '41.213.190.93';
-    const io = require('socket.io-client');
-    var socket = io.connect('http://' + serverIP);
+    var inputOK = 0;
 
+    var e_modal = document.getElementById('serverIPBox');
+    var span = document.getElementsByClassName("close")[0];
+
+    e_modal.style.display = "block";
+
+    span.onclick = function () {
+        e_modal.style.display = "none";
+    };
+
+    window.onclick = function (event) {
+        if (event.target == e_modal) {
+            e_modal.style.display = "none";
+        }
+    };
+
+    $('#connectButton').on('click', function () {
+        e_modal.style.display = "none";
+        var serverIP = '41.213.190.93';
+        var serverPort = '80';
+
+        serverIP = $('#inputServerIP').val();
+        serverPort = $('#inputServerPort').val();
+
+        inputOK = 1;
+    });
+
+    if (inputOK) {
+        // Appel du socket et connexion au serveur
+        const io = require('socket.io-client');
+        var socket = io.connect('http://' + serverIP + ':' + serverPort);
+    }
 
     const c3 = require("c3"); // Module pour les graphiques
 
@@ -103,23 +131,9 @@ $(document).ready(function () {
         updateDisplay();
     });
 
-    /*
-    $(e_currentStatus).on('click', function () {
-        e_modal.style.display = "block";
 
-        $(e_serverIP).text(serverIP);
-    });
 
-    span.onclick = function () {
-        e_modal.style.display = "none";
-    }
 
-    window.onclick = function (event) {
-        if (event.target == e_modal) {
-            e_modal.style.display = "none";
-        }
-    };
-    */
 
     // Définition des éléments jQuery de la page (onglet et boutons indicateurs latéraux)
     var currentTab = 'speed';
@@ -133,35 +147,35 @@ $(document).ready(function () {
     var e_statusTab = $('#statusTab');
 
     // Au clic sur un des boutons latéraux, affichage de l'onglet correspondant (appel de la fontion updateTab)
-    $(e_measurementsDiv).on('click', function() {
+    $(e_measurementsDiv).on('click', function () {
         currentTab = 'measurements';
         updateTab(e_measurementsTab, e_measurementsDiv);
     });
-    $(e_speedDiv).on('click', function() {
+    $(e_speedDiv).on('click', function () {
         currentTab = 'speed';
         updateTab(e_speedTab, e_speedDiv);
+
     });
-    $(e_otherDiv).on('click', function() {
+    $(e_otherDiv).on('click', function () {
         currentTab = 'other';
         updateTab(e_otherTab, e_otherDiv);
     });
-    $(e_statusDiv).on('click', function() {
+    $(e_statusDiv).on('click', function () {
         currentTab = 'status';
         updateTab(e_statusTab, e_statusDiv);
     });
 
     // Fontion updateTab 
     function updateTab(newTabToDisplay, currentDiv) {
-        $('.currentTab').css('display', 'none');
+        $('.currentTab').hide();
         $('.currentTab').removeClass('currentTab');
         $('.selected').removeClass('selected');
         $(currentDiv).addClass('selected');
         $(newTabToDisplay).addClass('currentTab');
-        $(newTabToDisplay).css('display', 'block');
+        $(newTabToDisplay).show();
     }
 
-    var e_modal = document.getElementById('statusBox');
-    var span = document.getElementsByClassName("close")[0];
+
     var e_serverIP = $('#serverIP');
     var e_connectionStatus = $('#connectionStatus');
     var e_latency = $('#latency');
