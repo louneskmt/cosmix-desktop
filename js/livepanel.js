@@ -124,6 +124,7 @@ $(document).ready(function () {
         $(e_latency).text(latency);
     });
 
+    /*
     $(e_currentStatus).on('click', function () {
         e_modal.style.display = "block";
 
@@ -139,4 +140,38 @@ $(document).ready(function () {
             e_modal.style.display = "none";
         }
     };
+    */
+
+    var currentTab = 'speed';
+    var e_measurementsDiv = $('#measurementsDiv');
+    var e_speedDiv = $('#speedDiv');
+    var e_otherDiv = $('#otherDiv');
+    var e_statusDiv = $('#statusDiv');
+    var e_measurementsTab = $('#measurementsTab');
+    var e_speedTab = $('#speedTab');
+    var e_otherTab = $('#otherTab');
+    var e_statusTab = $('#statusTab');
+
+    $(e_measurementsDiv).on('click', function() {
+        currentTab = 'measurements';
+        $('.selected').removeClass('selected');
+        $(e_measurementsDiv).addClass('selected');
+        $(e_measurementsDiv).style.display = "block";
+        
+    });
+    $(e_speedDiv).on('click', function() {
+        currentTab = 'speed';
+        $('.selected').removeClass('selected');
+        $(e_speedDiv).addClass('selected');
+    });
+    $(e_otherDiv).on('click', function() {
+        currentTab = 'other';
+        $('.selected').removeClass('selected');
+        $(e_otherDiv).addClass('selected');
+    });
+    $(e_statusDiv).on('click', function() {
+        currentTab = 'status';
+        $('.selected').removeClass('selected');
+        $(e_statusDiv).addClass('selected');
+    });
 });

@@ -273,3 +273,19 @@ button.invisible_bg{
     cursor: pointer;
     background: #FFF;
 }
+
+#speedTab {
+    display: none;
+}
+
+#otherTab {
+    display: none;
+}
+
+#measurementsTab {
+    display: none;
+}
+
+#statusTab {
+    display: none;
+}
