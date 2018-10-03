@@ -142,6 +142,7 @@ $(document).ready(function () {
     };
     */
 
+    // Définition des éléments jQuery de la page (onglet et boutons indicateurs latéraux)
     var currentTab = 'speed';
     var e_measurementsDiv = $('#measurementsDiv');
     var e_speedDiv = $('#speedDiv');
@@ -152,6 +153,7 @@ $(document).ready(function () {
     var e_otherTab = $('#otherTab');
     var e_statusTab = $('#statusTab');
 
+    // Au clic sur un des boutons latéraux, affichage de l'onglet correspondant (appel de la fontion updateTab)
     $(e_measurementsDiv).on('click', function() {
         currentTab = 'measurements';
         updateTab(e_measurementsTab, e_measurementsDiv);
@@ -169,6 +171,7 @@ $(document).ready(function () {
         updateTab(e_statusTab, e_statusDiv);
     });
 
+    // Fontion updateTab 
     function updateTab(newTabToDisplay, currentDiv) {
         $('.currentTab').css('display', 'none');
         $('.currentTab').removeClass('currentTab');
