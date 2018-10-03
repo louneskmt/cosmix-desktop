@@ -79,3 +79,35 @@ h3.math {
     font-size: 300%;
 }
 
+.tab{
+    width: 590px;
+    height: 400px;
+    background: #EFEFEF;
+    border-radius: 5px;
+
+    padding: 7px 10px 10px 10px;
+
+}
+
+.tab > h2 {
+    color: #604C8D;
+    font-weight: bold;
+    margin-top: -2px;
+}
+
+.tab > p {
+    margin: 10px 0px 10px 0px;
+}
+
+#connectionStatusDisplay {
+    display: inline-block;
+    height: 13px;
+    width: 13px;
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-origin: padding-box;
+    background-size: 0% !important;
+    border-radius: 50%; /* Cercle */
+    border: 2px solid transparent;
+}

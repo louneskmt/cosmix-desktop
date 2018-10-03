@@ -103,27 +103,6 @@ $(document).ready(function () {
         updateDisplay();
     });
 
-    // Get the modal
-    var e_modal = document.getElementById('statusBox');
-    var span = document.getElementsByClassName("close")[0];
-    var e_serverIP = $('#serverIP');
-    var e_connectionStatus = $('#connectionStatus');
-    var e_latency = $('#latency');
-    var startTime;
-
-    setInterval(function () {
-        if (socket.connected) $(e_connectionStatus).text("CONNECTED");
-        else $(e_connectionStatus).text("DISCONNECTED");
-
-        startTime = Date.now();
-        socket.emit('ping');
-    }, 1000);
-
-    socket.on('pong', function () {
-        latency = Date.now() - startTime;
-        $(e_latency).text(latency);
-    });
-
     /*
     $(e_currentStatus).on('click', function () {
         e_modal.style.display = "block";
@@ -180,4 +159,34 @@ $(document).ready(function () {
         $(newTabToDisplay).addClass('currentTab');
         $(newTabToDisplay).css('display', 'block');
     }
+
+    var e_modal = document.getElementById('statusBox');
+    var span = document.getElementsByClassName("close")[0];
+    var e_serverIP = $('#serverIP');
+    var e_connectionStatus = $('#connectionStatus');
+    var e_latency = $('#latency');
+    var startTime;
+
+    setInterval(function () {
+        if (socket.connected) {
+            $(e_connectionStatus).text("CONNECTED");
+            $('#connectionStatusDisplay').css('background-color', 'rgb(89, 243, 28)');
+            $('#connectionStatusDisplay').css('border-color', 'rgb(89, 243, 28)');
+        } else {
+            $(e_connectionStatus).text("DISCONNECTED");
+            $('#connectionStatusDisplay').css('background-color', 'rgb(255, 43, 43)');
+            $('#connectionStatusDisplay').css('border-color', 'rgb(255, 43, 43)');
+        }
+
+        startTime = Date.now();
+        socket.emit('ping');
+    }, 1000);
+
+    $(e_serverIP).text(serverIP);
+
+    socket.on('pong', function () {
+        latency = Date.now() - startTime;
+        $(e_latency).text(latency);
+    });
+
 });

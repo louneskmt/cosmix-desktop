@@ -275,10 +275,10 @@ button.invisible_bg{
 }
 
 #speedTab {
-    display: none;
+    display: block;
 }
 
-#otherTab {
+#statusTab {
     display: none;
 }
 
@@ -286,6 +286,6 @@ button.invisible_bg{
     display: none;
 }
 
-#statusTab {
+#otherTab {
     display: none;
 }
