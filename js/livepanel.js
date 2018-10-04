@@ -1,20 +1,19 @@
 $(document).ready(function () {
     var inputOK = 0;
+    var socket = 0;
+    const io = require('socket.io-client');
 
     var e_modal = document.getElementById('serverIPBox');
     var span = document.getElementsByClassName("close")[0];
 
-    e_modal.style.display = "block";
+    function connectSubmit() {
+        serverIP = document.forms["connectForm"]["inputServerIP"].value;
+        serverPort = document.forms["connectForm"]["inputServerPort"].value;
 
-    span.onclick = function () {
         e_modal.style.display = "none";
-    };
+    }
 
-    window.onclick = function (event) {
-        if (event.target == e_modal) {
-            e_modal.style.display = "none";
-        }
-    };
+    e_modal.style.display = "block";
 
     $('#connectButton').on('click', function () {
         e_modal.style.display = "none";
@@ -24,16 +23,11 @@ $(document).ready(function () {
         serverIP = $('#inputServerIP').val();
         serverPort = $('#inputServerPort').val();
 
-        inputOK = 1;
+        
     });
 
-    if (inputOK) {
-        // Appel du socket et connexion au serveur
-        const io = require('socket.io-client');
-        var socket = io.connect('http://' + serverIP + ':' + serverPort);
-    }
-
     const c3 = require("c3"); // Module pour les graphiques
+    socket = io.connect('http://' + serverIP + ':' + serverPort);
 
     // Variables et objets
     var currentStatus = "OFF";

@@ -98,9 +98,8 @@
             </aside>
             <div id="serverIPBox" class="modal">
                 <div>
-                    <span class="close">&times;</span>
                     <h2>Start new measurement</h2>
-                    <form action="">
+                    <form name="connectForm" onsubmit="connectSubmit()">
                         <p>
                             IP du serveur :
                             <input type="text" name="inputServerIP" id="inputServerIP" placeholder="41.213.190.93" size="15">
