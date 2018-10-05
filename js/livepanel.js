@@ -15,10 +15,11 @@ $(document).ready(function () {
 
     e_modal.style.display = "block";
 
+    var serverIP = '41.213.190.93';
+        var serverPort = '80';
     $('#connectButton').on('click', function () {
         e_modal.style.display = "none";
-        var serverIP = '41.213.190.93';
-        var serverPort = '80';
+        
 
         serverIP = $('#inputServerIP').val();
         serverPort = $('#inputServerPort').val();
