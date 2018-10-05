@@ -1,66 +1,82 @@
 const tempsAffichageSplash = 4000;
 
 
-
-
 /** Début du programme **/
 
+const electron = require('electron');
+const {ipcMain, app} = electron;
+const ansi = require("ansi-colors");
 
-const electron = require('electron')
-const ansi = require("ansi-colors")
-
-console.log(ansi.green("Démarrage du programme"))
-// Module to control application life.
-const app = electron.app
 // Module to create native browser window.
-const BrowserWindow = electron.BrowserWindow
+const BrowserWindow = electron.BrowserWindow;
 
-const path = require('path')
-const url = require('url')
+const path = require('path');
+const url = require('url');
+const fs = require("fs");
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow
-let splashWindow = null // Variable globale
+let mainWindow;
+let splashWindow = null; // Variable globale
 
-function createWindow () {
+
+const logPath = path.resolve(app.getPath("logs") + "/appLog.txt");
+console.log(ansi.gray(`Fichier de débogage : ${logPath} \n`));
+
+
+function createWindow (urlToOpen) {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 900, height: 600, show: false, titleBarStyle: 'hidden', frame: true, backgroundColor: "#FFF"})
+  var newWindow = new BrowserWindow({
+    transparent: true,
+    width: 900,
+    height: 600,
+    show: false,
+    titleBarStyle: 'none',
+    frame: false,
+    resizable: false,
+    maximizable: false,
+    hasShadow: true
+  })
+  logDebug(ansi.gray(`Creation de ${urlToOpen}`));
 
   // and load the index.html of the app.
-  mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
+  newWindow.loadURL(url.format({
+    pathname: path.join(__dirname, urlToOpen),
     protocol: 'file:',
     slashes: true
   }))
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  //mainWindow.webContents.openDevTools();
 
   // Emitted when the window is closed.
-  mainWindow.on('closed', function () {
+  newWindow.on('closed', function () {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
-    mainWindow = null
-  })
+    mainWindow = null;
+  });
 
-  mainWindow.on("ready-to-show", function(){
-    switchFromSplashToMain();
+  newWindow.on("ready-to-show", function(){
+    newWindow.show();
+    mainWindow.destroy();
+    mainWindow = newWindow;
+    logDebug(ansi.green(`Affichage de ${ansi.bold(mainWindow.webContents.getURL())}`));
   });
 }
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', splash) //Démarre un le splash
+app.on('ready', splash) //Démarre le splash
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
   // On OS X it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== 'darwin') {
-    app.quit()
+    logDebug(ansi.yellow("Fin de l'execution"))
+    app.quit();
   }
 })
 
@@ -68,44 +84,67 @@ app.on('activate', function () {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (mainWindow === null) {
-    createWindow();
+    splash();
   }
+})
+
+app.on('quit', function(){
+  logStream.end(new Date() + " : Fin du processus")
 })
 
 // Fonction pour afficher le splash
 function splash(){
-  splashWindow = new BrowserWindow({
+  logDebug(ansi.yellow("Ouverture du splash"));
+  
+  mainWindow = splashWindow = new BrowserWindow({
     width: 600,
     height: 280,
     movable: false,
     frame: false,
     resizable: false,
     hasShadow: false,
-    titleBarStyle: "customButtonsOnHover",
+    titleBarStyle: "none",
     show: false,
     transparent: true
   });
-  splashWindow.on("ready-to-show", function () { 
+  splashWindow.on("ready-to-show", function () {
     splashWindow.show();
-  })
+  });
 
   splashWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'pages/splash.html'),
     protocol: 'file:',
     slashes: true
-  }))
+  }));
 
-  setTimeout(function () { 
-    createWindow();
+  setTimeout(function () {
+    // TO SHOW
+    createWindow("pages/dashboard.html");
   }, tempsAffichageSplash);
 }
 
-function switchFromSplashToMain(){
-  if(splashWindow === null) return false;
+ipcMain.on("newWindowRequest", function (event, urlToOpen) {
+  logDebug(ansi.gray(`Request to open ${urlToOpen}`));
+  createWindow(urlToOpen)
+});
 
-  mainWindow.show();  
-  splashWindow.destroy();
-  console.log(ansi.green("Aucun problème détécté. Page d'accueil ouverte"))
+
+var logStream = fs.createWriteStream(logPath, {
+  flags: "w"
+})
+logDebug(new Date()+ " : Début de l'éxécution")
+
+
+function logDebug(text, level){
+  if(level==undefined) level = 5;
+
+  console.log(text);
+
+  var date = new Date();
+  var hour = date.getHours();
+  var mins = date.getMinutes();
+  var secs = date.getSeconds();
+  var msec = date.getMilliseconds();
+  var formattedDate = `[${hour}:${mins}:${secs}.${msec}] `;
+  logStream.write(ansi.unstyle(formattedDate+text+"\n"));
 }
-
-console.log(ansi.yellow("Ouverture du splash"));

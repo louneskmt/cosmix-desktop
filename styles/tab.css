@@ -1,0 +1,113 @@
+header{
+    display: inline-block;
+    height: 40px;
+    width: 50%;
+}
+h1{
+    padding: 0;
+    padding-left: 10px;
+    display: inline-block;
+    font-size: 240%;
+}
+.backButton{
+    display: inline-block;
+
+    width: 40px;
+    height: 40px;
+    background-color: #604C8D;    
+}
+aside{
+    position: relative;
+    float: left;
+
+    height: 100%;
+    width: 30%;
+
+}
+aside.big{
+    width: 70%;
+}
+.tableTabs{
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+
+}
+
+.tableTabs td:first-child {
+    border: 1px solid #604C8D;
+    border-top: 0;
+    border-right: 0;
+}
+
+.tableTabs td{
+    border: 1px solid #604C8D;
+    border-right: none;
+    padding: 10px;
+    cursor: pointer;
+}
+.tableTabs td.selected{
+    border-left: none;
+}
+
+.tableTabs td h5{
+    font-size: 130%;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.tableTabs td h2{
+    font-size: 300%;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #604C8D;
+}
+.tableTabs td h3{
+    font-size: 150%;
+}
+.tableTabs td h6{
+    font-size: 100%;
+}
+.tableTabs td h6.small{
+    font-size: 50%;
+}
+.tableTabs kbd{
+    display: block;
+    font-size: 150%;
+}
+
+h3.math {
+    font-size: 300%;
+}
+
+.tab{
+    width: 590px;
+    height: 400px;
+    background: #EFEFEF;
+    border-radius: 5px;
+
+    padding: 7px 10px 10px 10px;
+
+}
+
+.tab > h2 {
+    color: #604C8D;
+    font-weight: bold;
+    margin-top: -2px;
+}
+
+.tab > p {
+    margin: 10px 0px 10px 0px;
+}
+
+#connectionStatusDisplay {
+    display: inline-block;
+    height: 13px;
+    width: 13px;
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-origin: padding-box;
+    background-size: 0% !important;
+    border-radius: 50%; /* Cercle */
+    border: 2px solid transparent;
+}

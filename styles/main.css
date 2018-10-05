@@ -1,0 +1,291 @@
+/*
+Main stylesheet
+*/
+
+*{
+    box-sizing: border-box;
+    outline: none;
+}
+
+html, body{
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+    padding: 0;
+    font-family: "IBM Plex Sans", "Gill Sans";
+
+    overflow: hidden;
+
+    background-color: transparent;
+    border-radius: 10px;
+}
+
+h1,h2,h3,h4,h5,h6{
+    margin: 0;
+}
+h1, h3, h4 {
+    color: #604C8D;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 300%;
+}
+
+h2 {
+    font-weight: normal;
+    text-transform: uppercase;
+
+    margin-top: -10px;
+}
+h2 label,h3 label{
+    font-size: 50%;
+}
+
+h5 {
+    margin: 0;
+}
+
+.tar{
+    text-align: right;
+}
+.bgPurple{
+    background: #604C8D
+}
+
+.colGreen{
+    color: #4DB073
+}
+.colOrange{
+    color: #CA5A1B !important;
+}
+.colBlack{
+    color: black;
+}
+
+#titleAndLogo {
+    display: flex;
+    flex-direction: row;
+}
+
+#logo {
+    width: 90px;
+    height: 90px;
+}
+
+/* Boutons titleBar type mac*/
+div.closeButtons{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 15px;
+    width: 100%;
+    padding: 4px;
+    z-index: 99;
+
+    cursor: move;
+    -webkit-app-region: drag;
+}
+div.closeButtons div{
+    display: inline-block;
+    height: 13px;
+    width: 13px;
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-origin: padding-box;
+    background-size: 0% !important;
+    border-radius: 50%; /* Cercle */
+    border: 2px solid transparent;
+
+    -webkit-app-region: no-drag;
+    cursor: pointer;
+}
+div#closeButton{
+    background: url("../sprites/closeCross.png");
+
+    background-color: rgb(255, 59, 48);
+
+    border-color: rgb(255, 59, 48);
+
+    margin-left: 4px;
+}
+
+div#minifyButton{
+    background: url("../sprites/minifyButton.png");
+
+    background-color: rgb(255, 204, 0);
+    border-color: rgb(255, 204, 0);
+}
+div#fullscreenButton{
+    /*background-color: rgb(99, 218, 56);
+    border-color: rgb(99, 218, 56);*/
+    background: lightgray;
+}
+div.closeButtons:hover div{
+    background-size: 100% !important;
+}
+
+#logo_cern {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 25%;
+}
+
+button{
+    cursor: pointer;
+
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: inherit;
+    font-size: 110%;
+
+    color: white;
+    background-color: #604C8D;    
+    border: none;
+}
+button.invisible_bg{
+    margin: 5px 0;
+    padding: 0;
+    padding-left: 3px;
+
+    color: #604C8D;
+    
+    background: transparent;
+}
+
+.bodyContainer{
+    transition: filter .3s ease;
+    width: 100%;
+    height: 100%;
+    padding: 25px 20px 20px 20px;
+
+
+    background: #FFF;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)
+}
+.bodyContainer.dark{
+    filter: brightness(0.6) saturate(0%);
+}
+.bodyContainer.noPad{
+    padding: 0;
+}
+.padContainer{  
+    padding: 25px 20px 20px 20px;
+}
+
+.posRelative{
+    position: relative;
+}
+.floatLeft{
+    float: left;
+}
+.floatRight{
+    float: right;
+}
+
+.marTop5{
+    margin-top: 5px;
+}
+.marRight5{
+    margin-right: 5px;
+}
+.marBottom5{
+    margin-bottom: 5px;
+}
+.marLeft5{
+    margin-left: 5px;
+}
+
+.marTop10{
+    margin-top: 10px;
+}
+.marRight10{
+    margin-right: 10px;
+}
+.marBottom10{
+    margin-bottom: 10px;
+}
+.marLeft10{
+    margin-left: 10px;
+}
+
+.sprite-backArrow{
+    background: url("../sprites/backArrow.svg");
+    padding: 5px;
+    padding-left: 4px;
+    background-origin: content-box;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.math{
+    text-transform: none !important;
+    font-family: "IBM Plex Mono" !important;
+    font-style: italic !important;
+
+    font-size: 150%;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 91;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+/* Modal Content/Box */
+.modal > div {
+    margin: 15% auto;
+    padding: 20px;
+    width: 50%;
+    height: 50%;
+    
+    border: 1px solid #888;
+    border-radius: 5px;
+    background-color: #fefefe;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.modal .close {
+    transition: color .3s ease;
+
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+
+    background: none;
+}
+
+.modal .close:hover,
+.modal .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    background: #FFF;
+}
+
+#speedTab {
+    display: block;
+}
+
+#statusTab {
+    display: none;
+}
+
+#measurementsTab {
+    display: none;
+}
+
+#otherTab {
+    display: none;
+}

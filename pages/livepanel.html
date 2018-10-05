@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>LivePanel</title>
+        <link rel="stylesheet" href="../styles/main.css" />
+        <link rel="stylesheet" href="../styles/tab.css" />
+        <link rel="stylesheet" href="../styles/graph.css" />
+        <!-- UTILE?? <script src="/socket.io/socket.io.js"></script> -->
+        <script src="../js/main.js"></script>
+        <script src="../js/snap-svg.js"></script>
+        <script src="../js/livepanel.js"></script>
+
+    </head>
+    <body>
+        <div class="bodyContainer noPad">
+            <div class="closeButtons">
+                <div id="closeButton" onclick="window.close();"></div>
+                <div id="minifyButton" onclick="hide()"></div>
+                <div id="fullscreenButton" onclick="return false;"></div>
+            </div>
+            <aside class="padContainer big posRelative floatLeft">
+                <header>
+                    <div class="backButton sprite-backArrow"
+                        onclick="openWindow(`/pages/dashboard.html`)"></div>
+                    <h1>LivePanel</h1>
+                </header>
+
+                <div class="currentTab graph marTop10" id="speedGraph" viewBox="0 0 1000
+                    1000">
+                    <!-- 
+                    ViewBox permet de travailler avec des dimensions fictives, peu importante la taille finale.
+                    x=0 y=0 w=1000 h=1000
+                -->
+                </div>
+                <div class="marTop10 tab" id="measurementsTab" viewBox="0 0 1000
+                    1000">
+                    <h2>Measurements</h2>
+                </div>
+                <div class="marTop10 tab" id="otherTab" viewBox="0 0 1000 1000">
+                    <h2>Other</h2>
+                </div>
+                <div class="marTop10 tab" id="statusTab" viewBox="0 0 1000
+                    1000">
+                    <h2>Status</h2>
+                    <p>Status : <span id="connectionStatus">CONNECTED</span> <span id="connectionStatusDisplay"></span></p>
+                    <p>Ping : <span id="latency">----</span></p>
+                    <p>Server's IP : <span id="serverIP">----</span></p>
+                </div>
+
+                <h3 class="math">x&#772 = <span id="average">--</span> <label>
+                        &cap;/s</label></h3>
+            </aside>
+            <aside class="right tar">
+                <table class="tableTabs">
+                    <tr>
+                        <td id="statusDiv">
+                            <h5>Status</h5>
+                            <h2 id="currentStatus">OFF</h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="measurementsDiv">
+                            <div class="posRelative floatLeft">
+                                <h3 class="marTop5 marBottom5 colGreen"
+                                    id="eventsC1">----</h3>
+                                <h3 class="marTop5 marBottom5 colOrange"
+                                    id="eventsC2">----</h3>
+                                <h6 class="small marTop5">Total</h6>
+                                <h3 class="marBottom5 colBlack"
+                                    id="totalEvents">----</h3>
+                            </div>
+                            <div class="posRelative floatRight">
+                                <h5>Measurements</h5>
+                                <h6>&cap;</h6>
+                                <h2 id="coincidences">----</h2>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="selected" id="speedDiv">
+                            <h5>Speed</h5>
+                            <h2><span id="speed">0</span><label> &cap;/s</label></h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="otherDiv">
+                            <h5>Other</h5>
+                            <kbd>T=12°C</kbd>
+                            <kbd>H=123m</kbd>
+                            <kbd>GPSx=103943</kbd>
+                            <kbd>GPSy=103943</kbd>
+                        </td>
+                    </tr>
+                </table>
+            </aside>
+            <div id="serverIPBox" class="modal">
+                <div>
+                    <h2>Start new measurement</h2>
+                    <form name="connectForm" onsubmit="connectSubmit()">
+                        <p>
+                            IP du serveur :
+                            <input type="text" name="inputServerIP" id="inputServerIP" placeholder="41.213.190.93" size="15">
+                        </p>
+                        <p>
+                            Port :
+                            <input type="text" name="inputServerIP" id="inputServerPort" placeholder="80" size="5">
+                        </p>
+                        <button type="submit" id="connectButton">Connect</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>
