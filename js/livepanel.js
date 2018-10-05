@@ -24,10 +24,10 @@ $(document).ready(function () {
         latency: $('#latency'),
 
         tabSelectors: {
-            measurementsDiv: $('#measurementsDiv'),
-            speedDiv: $('#speedDiv'),
-            otherDiv: $('#otherDiv'),
-            statusDiv: $('#statusDiv')
+            measurements: $('#measurementsDiv'),
+            speed: $('#speedDiv'),
+            other: $('#otherDiv'),
+            status: $('#statusDiv')
         },
 
         tabs: {
@@ -70,7 +70,8 @@ $(document).ready(function () {
             speed: {
                 array: [],
                 average: 0,
-                somme: 0
+                somme: 0,
+                currentSpeed: 0
             }
         },
         environnement:{
@@ -113,7 +114,7 @@ $(document).ready(function () {
         $(DOM.eventsC2).text(measurements.events.C2);
         $(DOM.totalEvents).text(measurements.events.C1 + measurements.events.C2);
         $(DOM.coincidences).text(measurements.events.coincidences);
-        $(DOM.speed).text(speed);
+        $(DOM.speed).text(measurements.events.speed.currentSpeed);
 
         var averageSpeed = Math.round(measurements.events.speed.average * 10) / 10;
         $(DOM.average).text(averageSpeed);
@@ -129,52 +130,48 @@ $(document).ready(function () {
     socket.on('newData', function (message) {
         data = JSON.parse(message);
 
-        eventsObject.eventsC1 += data.newEventsC1;
-        eventsObject.eventsC2 += data.newEventsC2;
-        eventsObject.coincidences += data.newCoincidence;
-        currentStatus = data.status;
+        var speedObject = measurements.events.speed;
 
-        speed = data.newCoincidence;
-        var speedObject = measurements.events.speed
-        speedObject.array.push(speed);
+        measurements.events.C1 += data.newEventsC1;
+        measurements.events.C2 += data.newEventsC2;
+        measurements.events.coincidences += data.newCoincidence;
+        measurements.status = data.status;
+        speedObject.currentSpeed = data.newCoincidence;
+
+        speedObject.array.push(speedObject.currentSpeed);
         var pointsToHide = speedObject.array.length > 10 ? 1 : 0; // Déplace le graphique d'un point à partir de 10 valeurs
         speedGraph.flow({
-            columns: [["Speed", speed]],
+            columns: [["Speed", speedObject.currentSpeed]],
             length: pointsToHide // ==> Enlever x points pour afficher la nouvelle valeur
         })
 
-
-        speedObject.sum += speed;
+        speedObject.somme += speedObject.currentSpeed;
         speedObject.average = speedObject.somme / speedObject.array.length;
 
         updateDisplay();
     });
 
-
-
-
-
     // Définition des éléments jQuery de la page (onglet et boutons indicateurs latéraux)
     var currentTab = 'speed';
 
     // Au clic sur un des boutons latéraux, affichage de l'onglet correspondant (appel de la fontion updateTab)
-    /*$(e_measurementsDiv).on('click', function () {
+    $(DOM.tabSelectors.measurements).on('click', function () {
         currentTab = 'measurements';
-        updateTab(e_measurementsTab, e_measurementsDiv);
+        updateTab(DOM.tabs.measurements, DOM.tabSelectors.measurements);
     });
-    $(e_speedDiv).on('click', function () {
+    $(DOM.tabSelectors.speed).on('click', function () {
         currentTab = 'speed';
-        updateTab(e_speedTab, e_speedDiv);
+        updateTab(DOM.tabs.speed, DOM.tabSelectors.speed);
 
     });
-    $(e_otherDiv).on('click', function () {
+    $(DOM.tabSelectors.other).on('click', function () {
         currentTab = 'other';
-        updateTab(e_otherTab, e_otherDiv);
+        updateTab(DOM.tabs.other, DOM.tabSelectors.other);
     });
-    $(e_statusDiv).on('click', function () {
+    $(DOM.tabSelectors.status).on('click', function () {
         currentTab = 'status';
-        updateTab(e_statusTab, e_statusDiv);
-    });*/
+        updateTab(DOM.tabs.status, DOM.tabSelectors.status);
+    });
 
     // Fontion updateTab 
     function updateTab(newTabToDisplay, currentDiv) {
@@ -185,7 +182,6 @@ $(document).ready(function () {
         $(newTabToDisplay).addClass('currentTab');
         $(newTabToDisplay).show();
     }
-    
 
     setInterval(function () {
         if (socket.connected) {
@@ -198,17 +194,16 @@ $(document).ready(function () {
             $('#connectionStatusDisplay').css('border-color', 'rgb(255, 43, 43)');
         }
 
+        $(DOM.serverIP).text(serverIP);
+
         measurements.startTime = Date.now();
         socket.emit('ping');
+
+        socket.on('pong', function () {
+            latency = Date.now() - measurements.startTime;
+            $(DOM.latency).text(latency);
+        });
     }, 1000);
 
-    $(DOM.serverIP).text(serverIP);
-
-    socket.on('pong', function () {
-        latency = Date.now() - startTime;
-        $(DOM.latency).text(latency);
-    });
-
     console.log(socket);
-
 });
