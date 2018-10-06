@@ -1,10 +1,14 @@
 {
   "name": "cosmix-desktop",
+  "productName": "Cosmix Desktop",
   "version": "1.0.0",
   "description": "A desktop application for the Cosmix muon detector",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . cosmix-desktop --overwrite --asar=true --platform=win32 --arch=x64 --icon=assets/icons/win/icon.ico --prune=false --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Cosmix Desktop\"",    
+    "package-linux": "electron-packager . cosmix-desktop --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/512x512.png --prune=false --out=release-builds"
   },
   "repository": "https://github.com/lounes-kmt/cosmix-desktop",
   "keywords": [
@@ -16,6 +20,7 @@
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^3.0.2",
+    "electron-packager": "^12.2.0",
     "electron-rebuild": "^1.8.2"
   },
   "dependencies": {
