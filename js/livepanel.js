@@ -58,7 +58,6 @@ $(document).ready(function () {
             $(DOM.modal.popup).removeClass("show"); // TO BE CHANGED
         }, 3000)
     }
-    
 
     var measurements = {
         status: "OFF",

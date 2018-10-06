@@ -1,0 +1,12 @@
+#newMeasurementsForm > p {
+    border-bottom: 1px solid black;
+    margin-bottom: 7px;
+    margin-top: 5px;
+    padding-bottom: 8px;
+    line-height: 170%;
+}
+
+form:first-child {
+    margin-top: 10px;
+    padding-top: 50px;
+}

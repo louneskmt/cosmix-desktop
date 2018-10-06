@@ -92,3 +92,10 @@ section {
     margin-top: 10px;
     font-size: 90%;
 }
+
+#popup {
+    margin: 6% auto;
+    padding: 20px;
+    width: 90%;
+    height: 80%;
+}

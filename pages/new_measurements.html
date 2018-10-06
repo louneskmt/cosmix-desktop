@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>LivePanel</title>
+        <link rel="stylesheet" href="../styles/main.css" />
+        <link rel="stylesheet" href="../styles/tab.css" />
+        <link rel="stylesheet" href="../styles/graph.css" />
+        <link rel="stylesheet" href="../styles/new_measurements.css">
+        <!-- UTILE?? <script src="/socket.io/socket.io.js"></script> -->
+        <script src="../js/main.js"></script>
+        <script src="../js/snap-svg.js"></script>
+        <script src="../js/livepanel.js"></script>
+
+    </head>
+    <body>
+        <div class="bodyContainer noPad">
+            <div class="closeButtons">
+                <div id="closeButton" onclick="window.close();"></div>
+                <div id="minifyButton" onclick="hide()"></div>
+                <div id="fullscreenButton" onclick="return false;"></div>
+            </div>
+            <aside class="padContainer big posRelative floatLeft">
+                <header>
+                    <div class="backButton sprite-backArrow"
+                        onclick="openWindow(`/pages/dashboard.html`)"></div>
+                    <h1>New measurements</h1>
+                </header>
+
+                <form id="newMeasurementsForm" name="newMeasurementsForm">
+                    <h3>Measurements options</h3>
+                    <p>
+                            <input type="checkbox" name="inputTemperature" id="inputTemperature">Temperature    
+                            <input type="checkbox" name="inputBarometer" id="inputBarometer">Barometer
+                    </p>
+
+                    <h3>Server options</h3>
+                    <p> 
+                        IP du serveur : <input type="text" name="inputServerIP" id="inputServerIP"><br>
+                        Port :  <input type="text" name="inputServerPort" id="inputServerPort">
+                    </p>
+                    <button id="start">Start</button>
+                </form>
+
+
+            </aside>
+        
+        </div>
+    </body>
+
+</html>

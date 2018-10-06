@@ -29,9 +29,9 @@
 
       <section>
         <div id="nouvelleMesure">
-          <h3 onclick="openWindow(`/pages/livepanel.html`)">New measurement</h3>
+          <h3 onclick="openWindow(`/pages/new_measurements.html`)">New measurement</h3>
           <div id="ligne"></div>
-          <button class="invisible_bg">Quick measurement</button>
+          <button id="quickMeasurement" class="invisible_bg">Quick measurement</button>
 
           <div id="graph">
             <h4>Last data</h4>
@@ -46,15 +46,46 @@
             <li>Data 3</li>
             <li>Data 4</li>
           </ul>
-          <button class="invisible_bg">Open a file</button>
+          <button id="openFile" class="invisible_bg">Open a file</button>
         </aside>
       </section>
 
-      <button class="heavy aide">Interesting help/infos about Cosmix</button>
+      <button id="infosCosmix" class="heavy aide">Interesting help/infos about Cosmix</button>
+
+      <div id="cosmixInfosModal" class="modal">
+          <div>
+              <span class="close">&times;</span>
+              <h2>Help | Informations</h2>
+          </div>
+      </div>
+
+      <div id="openFileModal" class="modal">
+          <div>
+              <span class="close">&times;</span>
+              <h2>Open file</h2>
+          </div>
+      </div>
+
+      <div id="quickMeasurementModal" class="modal">
+          <div>
+              <span class="close">&times;</span>
+              <h2>Quick measurement</h2>
+              <form>
+                <h3>Start a new measurement with :</h3>
+                <p>
+                  <input type="checkbox" name="" id="">Default parameters
+                  <input type="checkbox" name="" id="">Last used parameters
+                </p>
+                <button id="startQuickMeasurement">Start</button>
+              </form>
+          </div>
+      </div>
 
       <a href="http://beamline-for-schools.web.cern.ch" target="_blank"><img
           src="../sprites/BeamlineCERN_logo.JPG" alt="Logo CERN" id="logo_cern"
           /></a>
     </div>
+
+    <script src="../js/dashboard.js"></script>
   </body>
 </html>
