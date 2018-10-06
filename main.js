@@ -21,7 +21,7 @@ let splashWindow = null; // Variable globale
 
 
 const logPath = path.resolve(app.getPath("logs") + "/appLog.txt");
-console.log(ansi.gray(`Fichier de débogage : ${logPath} \n`));
+console.log(ansi.gray(`Fichier de debogage : ${logPath} \n`));
 
 
 function createWindow (urlToOpen) {
@@ -134,7 +134,7 @@ ipcMain.on("newWindowRequest", function (event, urlToOpen) {
 var logStream = fs.createWriteStream(logPath, {
   flags: "w"
 })
-logDebug(new Date()+ " : Début de l'éxécution")
+logDebug(new Date()+ " : Debut de l'execution")
 
 
 function logDebug(text, level){
