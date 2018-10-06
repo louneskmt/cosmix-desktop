@@ -86,7 +86,7 @@ $(document).ready(function () {
     $(DOM.currentStatus).addClass("colOrange");
     // Colore le texte en orange pour avoir plus d'infos lors du débuggage
 
-    speedGraph = c3.generate({
+    var speedGraph = c3.generate({
         bindto: '#speedGraph',
         data: {
             columns: [
@@ -103,7 +103,7 @@ $(document).ready(function () {
         }
     });
 
-    measurementsGraph = c3.generate({
+    var measurementsGraph = c3.generate({
         bindto: '#measurementsGraph',
         data: {
             columns: [
@@ -116,6 +116,14 @@ $(document).ready(function () {
             },
             y: {
                 show: true,
+            }
+        },
+        axis: {
+            y: {
+                label: {
+                    text: 'Numbers of muons detected',
+                    position: 'outer-middle'
+                }
             }
         }
     });
