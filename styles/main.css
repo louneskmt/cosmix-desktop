@@ -161,7 +161,27 @@ button.invisible_bg{
     
     background: transparent;
 }
+input[type=button] {
+    cursor: pointer;
 
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: inherit;
+    font-size: 110%;
+
+    color: white;
+    background-color: #604C8D;    
+    border: none;
+}
+input[type=button].invisible_bg{
+    margin: 5px 0;
+    padding: 0;
+    padding-left: 3px;
+
+    color: #604C8D;
+    
+    background: transparent;
+}
 .bodyContainer{
     transition: filter .3s ease;
     width: 100%;
