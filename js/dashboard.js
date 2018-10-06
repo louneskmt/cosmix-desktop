@@ -2,7 +2,7 @@ var DOM = {
     modal: {
         cosmixInfos: {
             modal: $("#cosmixInfosModal"),
-            div: $(""),
+            div: $("#cosmixInfosDiv"),
             h2: $(""),
             p: $(""),
             button: $(""),
@@ -10,7 +10,7 @@ var DOM = {
         },
         openFile: {
             modal: $("#openFileModal"),
-            div: $(""),
+            div: $("#openFileDiv"),
             h2: $(""),
             p: $(""),
             button: $(""),
@@ -18,7 +18,7 @@ var DOM = {
         },
         quickMeasurement: {
             modal: $("#quickMeasurementModal"),
-            div: $(""),
+            div: $("#quickMeasurementDiv"),
             h2: $(""),
             p: $(""),
             button: $("#startQuickMeasurement"),

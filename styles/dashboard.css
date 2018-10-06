@@ -93,9 +93,32 @@ section {
     font-size: 90%;
 }
 
-#popup {
+#cosmixInfosDiv {
     margin: 6% auto;
     padding: 20px;
     width: 90%;
     height: 80%;
+}
+#openFileDiv {
+    margin: 24% auto;
+    padding: 20px;
+    width: 40%;
+    height: 25%;
+}
+form h3 {
+    margin-top: 5px;
+    margin-bottom: 1px;
+}
+.modal form input[type=button] {
+    margin-top: 15px;
+}
+#quickMeasurementDiv {
+    margin: 24% auto;
+    padding: 20px;
+    width: 45%;
+    height: 25%;
+}
+form p {
+    margin-top: 5px;
+    margin-bottom: 0px;
 }

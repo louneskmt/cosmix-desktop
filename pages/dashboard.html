@@ -53,22 +53,27 @@
       <button id="infosCosmix" class="heavy aide">Interesting help/infos about Cosmix</button>
 
       <div id="cosmixInfosModal" class="modal">
-          <div>
+          <div id="cosmixInfosDiv">
               <span class="close">&times;</span>
               <h2>Help | Informations</h2>
           </div>
       </div>
 
       <div id="openFileModal" class="modal">
-          <div>
+          <div id="openFileDiv">
               <span class="close">&times;</span>
               <h2>Open file</h2>
-              <a href="#"><input type="button" value="Open" id="openButton" name="openButton"></a>
+              <form>
+                <h3>Path to file :</h3>
+                <input type="file" name="pathFile" id="pathFile"><br>
+                <a href="#"><input type="button" value="Open" id="openButton" name="openButton"></a>
+              </form>
+              
           </div>
       </div>
 
       <div id="quickMeasurementModal" class="modal">
-          <div>
+          <div id="quickMeasurementDiv">
               <span class="close">&times;</span>
               <h2>Quick measurement</h2>
               <form>
