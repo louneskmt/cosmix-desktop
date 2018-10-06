@@ -115,8 +115,31 @@ h3.math {
     /* DISCONNECTED by default */
     background: rgb(255, 43, 43); 
     border-color: rgb(255, 43, 43);
+
 }
 #connectionStatusDisplay.connected{
     background: rgb(89, 243, 28);
     border-color: rgb(89, 243, 28);
+
+    animation: jump 1s ease 0s;
+}
+@keyframes jump{
+    0%{
+        transform: translate(0,0)
+    }
+    25%{
+        transform: translate(0,-200%)
+    }
+    50%{
+        transform: translate(0,00%)
+    }
+    60%{
+        transform: translate(0,-100%)        
+    }
+    80%{
+        transform: translate(0,10%)
+    }
+    85%{
+        transform: translate(0,0)
+    }
 }
