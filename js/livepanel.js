@@ -36,16 +36,16 @@ $(document).ready(function () {
             other: $('#otherTab'),
             status: $('#statusTab')
         },
-        
+
     };
 
     var serverIP = '41.213.190.93';
     var serverPort = '80';
     var socket = -1;
 
-    try{
+    try {
         socket = io.connect('http://' + serverIP + ':' + serverPort);
-    }catch(except) {
+    } catch (except) {
         console.error(except);
 
         $(DOM.modal.popup.h2).text("Connection failed")
@@ -54,7 +54,7 @@ $(document).ready(function () {
         $(DOM.modal.popup.button).text("OK")
         $(DOM.modal.popup).addClass("show");
 
-        setTimeout(function(){
+        setTimeout(function () {
             $(DOM.modal.popup).removeClass("show"); // TO BE CHANGED
         }, 3000)
     }
@@ -62,7 +62,7 @@ $(document).ready(function () {
     var measurements = {
         status: "OFF",
         startTime: 0,
-        events:{
+        events: {
             C1: 0,
             C2: 0,
             coincidences: 0,
@@ -73,7 +73,7 @@ $(document).ready(function () {
                 currentSpeed: 0
             }
         },
-        environnement:{
+        environnement: {
             temp: 0,
             GPSx: 0,
             GPSy: 0,
@@ -103,20 +103,25 @@ $(document).ready(function () {
         }
     });
 
+    measurementsGraph = c3.generate({
+        bindto: '#measurementsGraph',
+        data: {
+            columns: [
+                ['Numbers of muons', 0]
+            ]
+        },
+        grid: {
+            x: {
+                show: true
+            },
+            y: {
+                show: true,
+            }
+        }
+    });
+
     // Fonction de mise à jour de l'affichage
     function updateDisplay() {
-        /* STATUS*/
-        $(DOM.currentStatus).text(measurements.status);
-        if (measurements.status == "ON"){
-            $(DOM.connectionStatus).text("CONNECTED");
-            $('#connectionStatusDisplay').addClass("connected");
-            $(DOM.currentStatus).removeClass("colOrange");
-        } else {
-            $(DOM.connectionStatus).text("DISCONNECTED");
-            $('#connectionStatusDisplay').removeClass("connected");
-            $(DOM.currentStatus).addClass("colOrange");
-        }
-
         $(DOM.eventsC1).text(measurements.events.C1);
         $(DOM.eventsC2).text(measurements.events.C2);
         $(DOM.totalEvents).text(measurements.events.C1 + measurements.events.C2);
@@ -131,6 +136,22 @@ $(document).ready(function () {
             class: "math"
         }]);
     }
+
+    function updateStatus() {
+        /* STATUS*/
+        $(DOM.currentStatus).text(measurements.status);
+        if (socket.connected) {
+            $(DOM.connectionStatus).text("CONNECTED");
+            $('#connectionStatusDisplay').addClass("connected");
+            $(DOM.currentStatus).removeClass("colOrange");
+        } else {
+            $(DOM.connectionStatus).text("DISCONNECTED");
+            $('#connectionStatusDisplay').removeClass("connected");
+            $(DOM.currentStatus).addClass("colOrange");
+        }
+    }
+
+    setInterval(updateStatus, 1000);
 
     // Quand un message de type 'newData' est reçu, ajout des nouvelles valeurs,
     // calcul de la vitesse puis appel de la fonction de mise à jour de l'affichage
@@ -150,10 +171,14 @@ $(document).ready(function () {
         speedGraph.flow({
             columns: [["Speed", speedObject.currentSpeed]],
             length: pointsToHide // ==> Enlever x points pour afficher la nouvelle valeur
-        })
+        });
 
         speedObject.somme += speedObject.currentSpeed;
         speedObject.average = speedObject.somme / speedObject.array.length;
+
+        measurementsGraph.flow({
+            columns: [["Numbers of muons", speedObject.somme]],
+        });
 
         updateDisplay();
     });
@@ -162,7 +187,7 @@ $(document).ready(function () {
     var currentTab = 'speed';
 
     // Au clic sur un des boutons latéraux, affichage de l'onglet correspondant (appel de la fontion updateTab)
-    $(".tabSelector").click(function(evt){
+    $(".tabSelector").click(function (evt) {
         var tabName = $(this).attr("data-tab");
         updateTab(tabName, this);
     });

@@ -29,21 +29,22 @@
             </header>
             
             <section class="tabDisplay">
-                <div class="tab" id="speedTab" data-tab="speed">
+                <div class="tab marTop10" id="speedTab" data-tab="speed">
+                    <h2>Speed</h2>
                     <div class="graph marTop10" id="speedGraph"></div>
-
                     <h3 class="math">x&#772 = <span id="average">--</span> <label>
                         &cap;/s</label></h3>
                 </div>
                 <div class="marTop10 tab" id="measurementsTab" data-tab="measurements">
                     <h2>Measurements</h2>
+                    <div class="graph marTop10" id="measurementsGraph"></div>
                 </div>
                 <div class="marTop10 tab" id="otherTab" data-tab="other">
                     <h2>Other</h2>
                 </div>
                 <div class="marTop10 tab currentTab" id="statusTab" data-tab="status">
                     <h2>Status</h2>
-                    <p>Status : <span id="connectionStatus">CONNECTED</span> <span id="connectionStatusDisplay"></span></p>
+                    <p>Status : <span id="connectionStatus"></span> <span id="connectionStatusDisplay"></span></p>
                     <p>Ping : <span id="latency">----</span></p>
                     <p>Server's IP : <span id="serverIP">----</span></p>
                 </div>
@@ -52,7 +53,7 @@
 <aside class="right tar">
     <table class="tableTabs">
         <tr>
-            <td id="statusDiv" class="tabSelector" data-tab="status">
+            <td id="statusDiv" class="tabSelector selected" data-tab="status">
                 <h5>Status</h5>
                 <h2 id="currentStatus">OFF</h2>
             </td>
@@ -76,7 +77,7 @@
             </td>
         </tr>
         <tr>
-            <td class="selected tabSelector" id="speedDiv" data-tab="speed">
+            <td class="tabSelector" id="speedDiv" data-tab="speed">
                 <h5>Speed</h5>
                 <h2><span id="speed">0</span><label> &cap;/s</label></h2>
             </td>
