@@ -75,14 +75,20 @@ h3.math {
     font-size: 300%;
 }
 
+.tabDisplay{
+    height: 95%;
+    width: 100%;
+}
 .tab{
-    width: 590px;
-    height: 400px;
-    background: #EFEFEF;
+    display: none;
+    width: 100%;
+    height: 100%;
     border-radius: 5px;
 
     padding: 7px 10px 10px 10px;
-
+}
+.currentTab{
+    display: block;
 }
 
 .tab > h2 {
@@ -96,14 +102,21 @@ h3.math {
 }
 
 #connectionStatusDisplay {
+    transition: background-color .3s ease, border-color .3s ease;
     display: inline-block;
     height: 13px;
     width: 13px;
 
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-origin: padding-box;
-    background-size: 0% !important;
+    
     border-radius: 50%; /* Cercle */
     border: 2px solid transparent;
+
+    /* Following properties change according to status*/
+    /* DISCONNECTED by default */
+    background: rgb(255, 43, 43); 
+    border-color: rgb(255, 43, 43);
+}
+#connectionStatusDisplay.connected{
+    background: rgb(89, 243, 28);
+    border-color: rgb(89, 243, 28);
 }

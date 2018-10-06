@@ -105,9 +105,17 @@ $(document).ready(function () {
 
     // Fonction de mise à jour de l'affichage
     function updateDisplay() {
+        /* STATUS*/
         $(DOM.currentStatus).text(measurements.status);
-        if (measurements.status == "ON") $(DOM.currentStatus).removeClass("colOrange");
-        else $(DOM.currentStatus).addClass("colOrange");
+        if (measurements.status == "ON"){
+            $(DOM.connectionStatus).text("CONNECTED");
+            $('#connectionStatusDisplay').addClass("connected");
+            $(DOM.currentStatus).removeClass("colOrange");
+        } else {
+            $(DOM.connectionStatus).text("DISCONNECTED");
+            $('#connectionStatusDisplay').removeClass("connected");
+            $(DOM.currentStatus).addClass("colOrange");
+        }
 
         $(DOM.eventsC1).text(measurements.events.C1);
         $(DOM.eventsC2).text(measurements.events.C2);
@@ -154,7 +162,11 @@ $(document).ready(function () {
     var currentTab = 'speed';
 
     // Au clic sur un des boutons latéraux, affichage de l'onglet correspondant (appel de la fontion updateTab)
-    $(DOM.tabSelectors.measurements).on('click', function () {
+    $(".tabSelector").click(function(evt){
+        var tabName = $(this).attr("data-tab");
+        updateTab(tabName, this);
+    });
+    /*$(DOM.tabSelectors.measurements).on('click', function () {
         currentTab = 'measurements';
         updateTab(DOM.tabs.measurements, DOM.tabSelectors.measurements);
     });
@@ -170,27 +182,22 @@ $(document).ready(function () {
     $(DOM.tabSelectors.status).on('click', function () {
         currentTab = 'status';
         updateTab(DOM.tabs.status, DOM.tabSelectors.status);
-    });
+    });*/
 
     // Fontion updateTab 
-    function updateTab(newTabToDisplay, currentDiv) {
-        $('.currentTab').hide();
+    function updateTab(newTabName, tabSelector) {
         $('.currentTab').removeClass('currentTab');
         $('.selected').removeClass('selected');
-        $(currentDiv).addClass('selected');
-        $(newTabToDisplay).addClass('currentTab');
-        $(newTabToDisplay).show();
+
+        $(tabSelector).addClass('selected');
+        $(`.tab[data-tab=${newTabName}]`).addClass('currentTab');
     }
 
     setInterval(function () {
         if (socket.connected) {
-            $(DOM.connectionStatus).text("CONNECTED");
-            $('#connectionStatusDisplay').css('background-color', 'rgb(89, 243, 28)');
-            $('#connectionStatusDisplay').css('border-color', 'rgb(89, 243, 28)');
+            measurements.status = "ON";
         } else {
-            $(DOM.connectionStatus).text("DISCONNECTED");
-            $('#connectionStatusDisplay').css('background-color', 'rgb(255, 43, 43)');
-            $('#connectionStatusDisplay').css('border-color', 'rgb(255, 43, 43)');
+            measurements.status = "OFF";
         }
 
         $(DOM.serverIP).text(serverIP);

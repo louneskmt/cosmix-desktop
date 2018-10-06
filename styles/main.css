@@ -299,19 +299,3 @@ input[type=button].invisible_bg{
     cursor: pointer;
     background: #FFF;
 }
-
-#speedTab {
-    display: block;
-}
-
-#statusTab {
-    display: none;
-}
-
-#measurementsTab {
-    display: none;
-}
-
-#otherTab {
-    display: none;
-}
