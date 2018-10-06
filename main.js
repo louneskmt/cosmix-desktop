@@ -35,7 +35,8 @@ function createWindow (urlToOpen) {
     frame: false,
     resizable: false,
     maximizable: false,
-    hasShadow: true
+    hasShadow: true,
+    icon: path.join(__dirname, 'icons/png/64x64.png')
   })
   logDebug(ansi.gray(`Creation de ${urlToOpen}`));
 
@@ -105,7 +106,8 @@ function splash(){
     hasShadow: false,
     titleBarStyle: "none",
     show: false,
-    transparent: true
+    transparent: true,
+    icon: path.join(__dirname, 'icons/png/64x64.png')
   });
   splashWindow.on("ready-to-show", function () {
     splashWindow.show();
