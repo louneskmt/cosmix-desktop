@@ -93,6 +93,9 @@ $(document).ready(function () {
                 ['Speed', 0]
             ]
         },
+        subchart: {
+            show: true
+        },
         grid: {
             x: {
                 show: true
@@ -110,14 +113,18 @@ $(document).ready(function () {
                 ['Numbers of muons', 0]
             ]
         },
+        subchart: {
+            show: true
+        },
         grid: {
             x: {
                 show: true
             },
             y: {
-                show: true,
+                show: true
             }
-        },
+        }
+        /*
         axis: {
             y: {
                 label: {
@@ -125,7 +132,7 @@ $(document).ready(function () {
                     position: 'outer-middle'
                 }
             }
-        }
+        }*/
     });
 
     // Fonction de mise à jour de l'affichage
@@ -186,6 +193,7 @@ $(document).ready(function () {
 
         measurementsGraph.flow({
             columns: [["Numbers of muons", speedObject.somme]],
+            length: pointsToHide // ==> Enlever x points pour afficher la nouvelle valeur
         });
 
         updateDisplay();
