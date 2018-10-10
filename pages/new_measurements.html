@@ -30,16 +30,22 @@
                 </header>
 
                 <form id="newMeasurementsForm" name="newMeasurementsForm">
+                    <h3>General options</h3>
+                    <p>
+                        
+                    </p>
                     <h3>Measurements options</h3>
                     <p>
                             <input type="checkbox" name="inputTemperature" id="inputTemperature">Temperature    
                             <input type="checkbox" name="inputBarometer" id="inputBarometer">Barometer
+                            <input type="checkbox" name="inputGPS" id="inputGPS">GPS
                     </p>
 
                     <h3>Server options</h3>
                     <p> 
-                        IP du serveur : <input type="text" name="inputServerIP" id="inputServerIP"><br>
-                        Port :  <input type="text" name="inputServerPort" id="inputServerPort">
+                        IP du serveur : <input type="text" name="inputServerIP" id="inputServerIP" placeholder="41.213.190.93"><br>
+                        Port :  <input type="text" name="inputServerPort" id="inputServerPort" placeholder="80"><br>
+                        Data reception interval : <input type="number" name="inputReception" id="inputReception" placeholder="1" min="0.5"> sec 
                     </p>
                     <a href="./livepanel.html"><input type="button" value="Start"></a>
                 </form>

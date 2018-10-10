@@ -10,3 +10,7 @@ form:first-child {
     margin-top: 10px;
     padding-top: 50px;
 }
+
+input[type=number] {
+    width: 50px;
+}
