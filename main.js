@@ -4,7 +4,7 @@ const tempsAffichageSplash = 4000;
 /** Début du programme **/
 
 const electron = require('electron');
-const {ipcMain, app} = electron;
+const {ipcMain, app, nativeImage} = electron;
 const ansi = require("ansi-colors");
 
 // Module to create native browser window.
@@ -24,6 +24,8 @@ const logPath = path.resolve(app.getPath("logs") + "/appLog.txt");
 console.log(ansi.gray(`Fichier de debogage : ${logPath} \n`));
 
 
+app.dock.setIcon(path.join(__dirname, 'assets/icons/mac/pngIcon.png'));
+
 function createWindow (urlToOpen) {
   // Create the browser window.
   var newWindow = new BrowserWindow({
@@ -38,6 +40,7 @@ function createWindow (urlToOpen) {
     hasShadow: true,
     icon: path.join(__dirname, 'assets/icons/png/64x64.png')
   })
+
   logDebug(ansi.gray(`Creation de ${urlToOpen}`));
 
   // and load the index.html of the app.
