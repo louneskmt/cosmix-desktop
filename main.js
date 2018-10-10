@@ -23,8 +23,62 @@ let splashWindow = null; // Variable globale
 const logPath = path.resolve(app.getPath("logs") + "/appLog.txt");
 console.log(ansi.gray(`Fichier de debogage : ${logPath} \n`));
 
-
+/*******************************/
+/*      APP CUSTOMIZATION      */
+/*           BEGIN             */
+/*******************************/
 app.dock.setIcon(path.join(__dirname, 'assets/icons/mac/pngIcon.png'));
+app.setName("Cosmix Desktop")
+
+// Add Copy-Paste
+if (process.platform === 'darwin') { 
+  var template = [{ 
+    label: 'FromScratch', 
+    submenu: [{ 
+      label: 'Quit', 
+      accelerator: 'CmdOrCtrl+Q', 
+      click: function() { 
+        app.quit(); 
+      } 
+    }] 
+  }, { 
+    label: 'Edit', 
+    submenu: [{ 
+      label: 'Undo', 
+      accelerator: 'CmdOrCtrl+Z', 
+      selector: 'undo:' 
+    }, { 
+      label: 'Redo', 
+      accelerator: 'Shift+CmdOrCtrl+Z', 
+      selector: 'redo:' 
+    }, { 
+      type: 'separator'
+    }, { 
+      label: 'Cut', 
+      accelerator: 'CmdOrCtrl+X', 
+      selector: 'cut:' 
+    }, { 
+      label: 'Copy', 
+      accelerator: 'CmdOrCtrl+C', 
+      selector: 'copy:'
+    }, { 
+      label: 'Paste', 
+      accelerator: 'CmdOrCtrl+V', 
+      selector: 'paste:' 
+    }, { 
+      label: 'Select All', 
+      accelerator: 'CmdOrCtrl+A', 
+      selector: 'selectAll:' 
+    }] 
+  }];
+  var osxMenu = menu.buildFromTemplate(template);
+  menu.setApplicationMenu(osxMenu);
+}
+/*******************************/
+/*      APP CUSTOMIZATION      */
+/*             END             */
+/*******************************/
+
 
 function createWindow (urlToOpen) {
   // Create the browser window.
