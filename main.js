@@ -1,10 +1,14 @@
-const tempsAffichageSplash = 4000;
-
+var tempsAffichageSplash = 4000;
+var debugVars = {
+  testing: false,
+  firstWindow: "pages/dashboard.html",
+  args: {}
+}
 
 /** Début du programme **/
 
 const electron = require('electron');
-const {ipcMain, app, nativeImage} = electron;
+const {ipcMain, app, nativeImage, Menu} = electron;
 const ansi = require("ansi-colors");
 
 // Module to create native browser window.
@@ -22,6 +26,47 @@ let splashWindow = null; // Variable globale
 
 const logPath = path.resolve(app.getPath("logs") + "/appLog.txt");
 console.log(ansi.gray(`Fichier de debogage : ${logPath} \n`));
+
+/*******************************/
+/*           DEBUG             */
+/*           BEGIN             */
+/*******************************/
+if(process.argv.length>2) debugVars.testing = true; // If there are arguments specified 
+
+if(debugVars.testing){
+  tempsAffichageSplash = 1;
+
+  var lastArg = null;
+  process.argv.forEach(function(val, ix){
+    if(ix<2) return false; // return false; <==> continue;
+    
+    var letterArgsPattern = /^-(?!-)(.+)$/;
+    var anyArgPattern = /^--.*/;
+
+    if(val.match(letterArgsPattern)){ // If argument starts with ONLY ONE `-``
+      var letterArgsReg = (letterArgsPattern).exec(val); // ==> ["-abc", "abc", index: 0, input: '-abc', ...]
+
+      debugVars.args.letterArgs = letterArgsReg[1]; // Returns "abc" for "-abc"
+    }
+    if(val.match(anyArgPattern)){ // If argument starts with `--`
+      var argValue = process.argv[ix+1];
+      debugVars.args[val] = argValue;    
+    }
+  });
+
+  console.log("\n");
+  console.log(debugVars.args);
+  console.log("\n");
+}
+
+// Interpret process args
+if(debugVars.args.hasOwnProperty("--firstWindow")) debugVars.firstWindow = debugVars.args["--firstWindow"];
+
+/*******************************/
+/*           DEBUG             */
+/*            END              */
+/*******************************/
+
 
 /*******************************/
 /*      APP CUSTOMIZATION      */
@@ -71,8 +116,8 @@ if (process.platform === 'darwin') {
       selector: 'selectAll:' 
     }] 
   }];
-  var osxMenu = menu.buildFromTemplate(template);
-  menu.setApplicationMenu(osxMenu);
+  var osxMenu = Menu.buildFromTemplate(template);
+  Menu.setApplicationMenu(osxMenu);
 }
 /*******************************/
 /*      APP CUSTOMIZATION      */
@@ -178,7 +223,7 @@ function splash(){
 
   setTimeout(function () {
     // TO SHOW
-    createWindow("pages/dashboard.html");
+    createWindow(debugVars.firstWindow);
   }, tempsAffichageSplash);
 }
 
