@@ -35,28 +35,28 @@ if(process.argv.length>2) debugVars.testing = true; // If there are arguments sp
 
 if(debugVars.testing){
   tempsAffichageSplash = 1;
-
+  
   var lastArg = null;
   process.argv.forEach(function(val, ix){
     if(ix<2) return false; // return false; <==> continue;
     
     var letterArgsPattern = /^-(?!-)(.+)$/;
     var anyArgPattern = /^--.*/;
-
+    
     if(val.match(letterArgsPattern)){ // If argument starts with ONLY ONE `-``
-      var letterArgsReg = (letterArgsPattern).exec(val); // ==> ["-abc", "abc", index: 0, input: '-abc', ...]
+    var letterArgsReg = (letterArgsPattern).exec(val); // ==> ["-abc", "abc", index: 0, input: '-abc', ...]
+    
+    debugVars.args.letterArgs = letterArgsReg[1]; // Returns "abc" for "-abc"
+  }
+  if(val.match(anyArgPattern)){ // If argument starts with `--`
+  var argValue = process.argv[ix+1];
+  debugVars.args[val] = argValue;    
+}
+});
 
-      debugVars.args.letterArgs = letterArgsReg[1]; // Returns "abc" for "-abc"
-    }
-    if(val.match(anyArgPattern)){ // If argument starts with `--`
-      var argValue = process.argv[ix+1];
-      debugVars.args[val] = argValue;    
-    }
-  });
-
-  console.log("\n");
-  console.log(debugVars.args);
-  console.log("\n");
+console.log("\n");
+console.log(debugVars.args);
+console.log("\n");
 }
 
 // Interpret process args
@@ -115,6 +115,21 @@ if (process.platform === 'darwin') {
       accelerator: 'CmdOrCtrl+A', 
       selector: 'selectAll:' 
     }] 
+  }, {
+      label: "Show",
+      submenu: [{
+        label: 'Open Dev Console', 
+        accelerator: 'CmdOrCtrl+Alt+I', 
+        click: function() { 
+          mainWindow.webContents.toggleDevTools();
+        }
+      }, {
+        label: 'Reload', 
+        accelerator: 'CmdOrCtrl+R', 
+        click: function() { 
+          mainWindow.reload();
+        }
+      }]
   }];
   var osxMenu = Menu.buildFromTemplate(template);
   Menu.setApplicationMenu(osxMenu);
@@ -139,19 +154,19 @@ function createWindow (urlToOpen) {
     hasShadow: true,
     icon: path.join(__dirname, 'assets/icons/png/64x64.png')
   })
-
+  
   logDebug(ansi.gray(`Creation de ${urlToOpen}`));
-
+  
   // and load the index.html of the app.
   newWindow.loadURL(url.format({
     pathname: path.join(__dirname, urlToOpen),
     protocol: 'file:',
     slashes: true
   }))
-
+  
   // Open the DevTools.
   //mainWindow.webContents.openDevTools();
-
+  
   // Emitted when the window is closed.
   newWindow.on('closed', function () {
     // Dereference the window object, usually you would store windows
@@ -159,8 +174,8 @@ function createWindow (urlToOpen) {
     // when you should delete the corresponding element.
     mainWindow = null;
   });
-
-  newWindow.on("ready-to-show", function(){
+  
+  newWindow.once("ready-to-show", function(){
     newWindow.show();
     mainWindow.destroy();
     mainWindow = newWindow;
@@ -214,13 +229,13 @@ function splash(){
   splashWindow.on("ready-to-show", function () {
     splashWindow.show();
   });
-
+  
   splashWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'pages/splash.html'),
     protocol: 'file:',
     slashes: true
   }));
-
+  
   setTimeout(function () {
     // TO SHOW
     createWindow(debugVars.firstWindow);
@@ -241,9 +256,9 @@ logDebug(new Date()+ " : Debut de l'execution")
 
 function logDebug(text, level){
   if(level==undefined) level = 5;
-
+  
   console.log(text);
-
+  
   var date = new Date();
   var hour = date.getHours();
   var mins = date.getMinutes();
