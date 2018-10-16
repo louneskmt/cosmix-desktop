@@ -142,21 +142,20 @@ div.closeButtons:hover div{
 
 button{
     cursor: pointer;
+    padding: 5px 8px;
+    margin: 0 5px;
 
     font-weight: bold;
     text-transform: uppercase;
     font-family: inherit;
-    font-size: 110%;
+    font-size: 100%;
 
     color: white;
     background-color: #604C8D;    
     border: none;
+    border-radius: 2px;
 }
 button.invisible_bg{
-    margin: 5px 0;
-    padding: 0;
-    padding-left: 3px;
-
     color: #604C8D;
     
     background: transparent;

@@ -31,7 +31,7 @@ $(document).ready(function(){
                 {text: "OK", onclick: "close"},
                 {text: "See more", onclick: function(){ window.open(url) } }
             ]
-         })
+        })
         **/
         constructor(obj){
             var thi$ = this; // Keep reference to this when we're in functions
@@ -55,7 +55,7 @@ $(document).ready(function(){
             var buttonDiv = $("#multiModal .buttons");
             $(buttonDiv).html(""); //Empty the div
             this.buttons.forEach(function(val, ix){ // For Each Buttons
-                var highlightClass = ix==0?` class="highlight" `:""
+                var highlightClass = ix!=0?` class="invisible_bg" `:""
                 var el = $.parseHTML(`<button ${highlightClass}>${val.text}</button>`)
 
                 // Events
@@ -73,7 +73,7 @@ $(document).ready(function(){
                     }
                 }
 
-                $(buttonDiv).append(el);
+                $(buttonDiv).prepend(el);
             });
             
             if(this.showNow){

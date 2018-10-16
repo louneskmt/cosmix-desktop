@@ -1,6 +1,8 @@
 $(document).ready(function () {
     const c3 = require("c3"); // Module pour les graphiques
     const io = require('socket.io-client');
+    const remote = require("remote");
+    const app = remote.app;
 
     var DOM = {
         modal: {
@@ -48,16 +50,26 @@ $(document).ready(function () {
     } catch (except) {
         console.error(except);
 
-        $(DOM.modal.popup.h2).text("Connection failed")
-        $(DOM.modal.popup.p).html(`<pre>${except}</pre>`)
-        $(DOM.modal.popup.button).text("OK")
-        $(DOM.modal.popup.button).text("OK")
-        $(DOM.modal.popup).addClass("show");
-
-        setTimeout(function () {
-            $(DOM.modal.popup).removeClass("show"); // TO BE CHANGED
-        }, 3000)
+        
     }
+
+    socket.on("error", function(err){
+        var exceptModal = new Modal({
+            title: "Connection failed",
+            content: `<pre>${err}</pre>`,
+            buttons: [{text: "OK", onclick: "close"}]
+        })
+    })
+
+    socket.on("disconnect", function(reason){
+        var exceptModal = new Modal({
+            title: "Socket Disconnected",
+            content: `<pre>${reason}</pre>`,
+            buttons: [{text: "OK", onclick: "close"}]
+        })
+
+        app.dock.bounce();
+    })
 
     var measurements = {
         status: "OFF",
@@ -237,19 +249,19 @@ $(document).ready(function () {
     setInterval(function () {
         if (socket.connected) {
             measurements.status = "ON";
+
+            measurements.startTime = Date.now();
+            socket.emit('ping');
+
+            socket.on('pong', function () {
+                latency = Date.now() - measurements.startTime;
+                $(DOM.latency).text(latency);
+            });
         } else {
             measurements.status = "OFF";
         }
 
         $(DOM.serverIP).text(serverIP);
-
-        measurements.startTime = Date.now();
-        socket.emit('ping');
-
-        socket.on('pong', function () {
-            latency = Date.now() - measurements.startTime;
-            $(DOM.latency).text(latency);
-        });
     }, 1000);
 
     console.log(socket);

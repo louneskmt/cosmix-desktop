@@ -7,7 +7,7 @@
   "scripts": {
     "start": "electron .",
     "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
-    "package-win": "electron-packager . cosmix-desktop --overwrite --asar=true --platform=win32 --arch=x64 --icon=assets/icons/win/icon.ico --prune=false --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Cosmix Desktop\"",    
+    "package-win": "electron-packager . cosmix-desktop --overwrite --asar=true --platform=win32 --arch=x64 --icon=assets/icons/win/icon.ico --prune=false --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Cosmix Desktop\"",
     "package-linux": "electron-packager . cosmix-desktop --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/512x512.png --prune=false --out=release-builds"
   },
   "repository": "https://github.com/lounes-kmt/cosmix-desktop",
@@ -26,6 +26,7 @@
   "dependencies": {
     "ansi-colors": "^3.1.0",
     "c3": "^0.6.7",
+    "googleapis": "^27.0.0",
     "jquery": "^3.3.1",
     "npm": "^6.4.1",
     "serialport": "^7.0.2",
