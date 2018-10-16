@@ -61,6 +61,7 @@ function authorize(credentials, callback) {
         
         rl.question(ansi.gray('Enter the code from that page here: '), (code) => {
             rl.close();
+            
             oAuth2Client.getToken(code, (err, token) => {
                 if (err) return console.error('Error while trying to retrieve access token', err);
                 oAuth2Client.setCredentials(token);
@@ -81,7 +82,7 @@ function authorize(credentials, callback) {
     */
     
     const spreadsheetId = '1_4-wPGsQqzcj2a9XG6bUuk1zhUT8E9N8fF3rjLNGE8U'
-    
+    var sheetData = null;
     function mainProgram(auth) {
         const sheets = google.sheets({version: 'v4', auth});
         sheets.spreadsheets.values.get({
@@ -92,9 +93,9 @@ function authorize(credentials, callback) {
             const rows = res.data.values;
             if (rows.length) {
                 // Print columns A and E, which correspond to indices 0 and 4.
-                rows.map((row) => {
-                    console.log(row);
-                });
+
+                console.log(rows);
+                sheetData = rows;
             } else {
                 console.log('No data found.');
             }
@@ -106,31 +107,37 @@ function authorize(credentials, callback) {
 function secondProgram(sheets){
     console.log("\n Now it's your turn to be on the spreadsheet.")
     var NAME = "";
-        rl.question("What's your name? : ", (name)=>{
-            askHeight(sheets,NAME);
-        })
-}
+        rl.question("Telle me about you (Name/Height ==> Killian/1,72) : ", (answer)=>{
+            rl.close();
+
+            var regexp = /(.*)\/(.*)/i.exec(answer);
+            var name = regexp[1];
+            var height = regexp[2];
+
+            console.log("Ok... Wait a second")
+            var values = [[name], [height]];
     
-function askHeight(sheets, name){
-    rl.question("What's your name? : ", (name)=>{
-    })
-    /*rl.question("How tall are you ? (in meters) : ", (height)=>{
-        rl.close();
+            var body = {values: values}
+            
+            var range = String.fromCharCode("A".charCodeAt(0) + sheetData[0].length)+"1:"+String.fromCharCode("A".charCodeAt(0) + sheetData[0].length)+"2";
 
-        console.log("Ok... Wait a second")
-        var values = [[name], [height]];
+            sheets.spreadsheets.values.append({
+                spreadsheetId: spreadsheetId,
+                range: range,
+                valueInputOption: "USER_ENTERED",
+                resource: body
+            }, (err, result) => {
+                if (err) {
+                  // Handle error.
+                  console.log(err);
+                } else {
+                  console.log(ansi.green(`${result.data.updates.updatedCells} cells appended.`));
 
-        var body = {values: values}
-        
-        sheets.spreadsheets.values.append({
-            spreadsheetId: spreadsheetId,
-            range: "1:2",
-            valueInputOption: "USER_ENTERED",
-            ressource: body
-        }, ((response)=>{                  
-            var result = response.result;
-            console.log(response)
-            console.log(ansi.green(`\n ${result.updates.updatedCells} cells appended.`));
-        }))
-    })*/
+                  console.log("\n You can see the sheet at : "+ansi.blue("https://docs.google.com/spreadsheets/d/1_4-wPGsQqzcj2a9XG6bUuk1zhUT8E9N8fF3rjLNGE8U/"))
+                  console.log(ansi.greenBright("\n The test is finished. \n"))
+                  process.exit(0);
+                }
+              })
+
+        })
 }
