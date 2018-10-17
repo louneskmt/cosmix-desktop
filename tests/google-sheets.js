@@ -3,9 +3,9 @@ const readline = require('readline');
 const {google} = require('googleapis');
 const ansi = require("ansi-colors");
 
-if(process.platform=="win32"){
+if(process.platform=="win32" || true){
     console.log(ansi.redBright("To access this test on Windows, please run : ")+ansi.bold("node "+__filename))
-    process.exit(0);
+    process.exit(1);
 }
 
 // If modifying these scopes, delete token.json.

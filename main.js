@@ -71,6 +71,16 @@ if(debugVars.args.hasOwnProperty("--test")){
     var processArgs = debugVars.args.hasOwnProperty("--testArgs") ? debugVars.args["--testArgs"] : "";
 
     var testProcess = childProcess.fork(`${app.getAppPath()}/tests/${debugVars.args["--test"]}`, {execArgv: processArgs});
+    testProcess.on("exit", function(code){
+        var text = "";
+        if(code==0){
+            text = ansi.greenBright("The test has passed with no errors. Code : 0")
+        }else{
+            text = ansi.redBright("Test failed with code "+code)
+        }
+        console.log(`\n      ${text} \n`);
+        process.exit(0);
+    })
 }
 
 /*******************************/
