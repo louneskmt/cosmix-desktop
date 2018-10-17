@@ -81,7 +81,7 @@ function authorize(credentials, callback) {
     }
     
     /**
-    * Prints the names and majors of students in a sample spreadsheet:
+    * Prints the names and height of people in our club
     * @see https://docs.google.com/spreadsheets/d/1_4-wPGsQqzcj2a9XG6bUuk1zhUT8E9N8fF3rjLNGE8U/edit#gid=0
     * @param {google.auth.OAuth2} auth The authenticated Google OAuth client.
     */
