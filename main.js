@@ -83,11 +83,12 @@ if(debugVars.args.hasOwnProperty("--test")){
 /*      APP CUSTOMIZATION      */
 /*           BEGIN             */
 /*******************************/
-app.dock.setIcon(path.join(__dirname, 'assets/icons/mac/pngIcon.png'));
-app.setName("Cosmix Desktop")
 
 // Add Copy-Paste
 if (process.platform === 'darwin') { 
+    app.dock.setIcon(path.join(__dirname, 'assets/icons/mac/pngIcon.png'));
+    app.setName("Cosmix Desktop"); 
+
     var template = [{ 
         label: 'FromScratch', 
         submenu: [{ 
