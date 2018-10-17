@@ -160,7 +160,7 @@ button.invisible_bg{
     
     background: transparent;
 }
-input[type=button] {
+/*input[type=button] {
     cursor: pointer;
 
     font-weight: bold;
@@ -180,7 +180,7 @@ input[type=button].invisible_bg{
     color: #604C8D;
     
     background: transparent;
-}
+} */
 .bodyContainer{
     transition: filter .3s ease;
     width: 100%;
