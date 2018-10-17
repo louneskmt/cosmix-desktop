@@ -6,7 +6,6 @@ const ansi = require("ansi-colors");
 // If modifying these scopes, delete token.json.
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets'];
 const TOKEN_PATH = __dirname+'/google-token.json';
-console.log(TOKEN_PATH)
 
 // Load client secrets from a local file.
 fs.readFile(__dirname+'/google-credentials.json', (err, content) => {
