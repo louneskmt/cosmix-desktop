@@ -3,6 +3,11 @@ const readline = require('readline');
 const {google} = require('googleapis');
 const ansi = require("ansi-colors");
 
+if(process.platform=="win32"){
+    console.log(ansi.redBright("To access this test on Windows, please run : ")+ansi.bold("node "+__filename))
+    process.exit(0);
+}
+
 // If modifying these scopes, delete token.json.
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets'];
 const TOKEN_PATH = __dirname+'/google-token.json';
