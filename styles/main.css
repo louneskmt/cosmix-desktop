@@ -212,6 +212,10 @@ input[type=button].invisible_bg{
     float: right;
 }
 
+.block{
+    display: block !important;
+}
+
 .marTop5{
     margin-top: 5px;
 }
