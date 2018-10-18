@@ -3,7 +3,7 @@ var debugVars = {
     debugging: false, // Debugging is the Electron app
     testing: false, // Testing is testing snippets like Google Sheets
     openWindow: false,
-    firstWindow: "pages/livepanel.html",
+    firstWindow: "pages/dashboard.html",
     args: {}
 }
 
