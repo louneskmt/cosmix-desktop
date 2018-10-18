@@ -1,8 +1,7 @@
 $(document).ready(function () {
     const c3 = require("c3"); // Module pour les graphiques
     const io = require('socket.io-client');
-    const remote = require("remote");
-    const app = remote.app;
+    const app = require("electron").remote.app;
 
     var DOM = {
         modal: {
