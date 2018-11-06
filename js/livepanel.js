@@ -186,11 +186,11 @@ $(document).ready(function () {
 
         var speedObject = measurements.events.speed;
 
-        measurements.events.C1 += data.eventsC1;
-        measurements.events.C2 += data.eventsC2;
-        measurements.events.coincidences += data.coincidences;
+        measurements.events.C1 += parseInt(data.eventsC1, 10);
+        measurements.events.C2 += parseInt(data.eventsC2, 10);
+        measurements.events.coincidences += parseInt(data.coincidences, 10);
         measurements.status = data.status;
-        speedObject.currentSpeed = data.coincidences;
+        speedObject.currentSpeed = parseInt(data.coincidences, 10);
 
         speedObject.array.push(speedObject.currentSpeed);
         var pointsToHide = speedObject.array.length > 10 ? 1 : 0; // Déplace le graphique d'un point à partir de 10 valeurs
