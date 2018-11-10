@@ -290,3 +290,16 @@ function logDebug(text, level){
     var formattedDate = `[${hour}:${mins}:${secs}.${msec}] `;
     logStream.write(ansi.unstyle(formattedDate+text+"\n"));
 }
+
+
+/// TESTING PRE-REQUISITES
+const cosmixFolder = app.getPath("userData"); // Mac OS ==> /Users/[Username]/Library/Application Support/Cosmix Desktop 
+
+const folders = ["conf", "data"]; // Default folders which should be in the userData folder
+for (const i in folders) {
+    let folder = path.join(cosmixFolder, folders[i]);
+    if(!fs.existsSync(folder)){
+        fs.mkdirSync(folder);
+        logDebug("Default folder made at "+folder);
+    }
+}

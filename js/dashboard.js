@@ -65,4 +65,19 @@ $(document).ready(function(){
             ]
         })
     });
+
+    $(DOM.openFile).click(function(){
+        var fileModal = new Modal({
+            title: "Open a file",
+            content: `
+                <input type="file" id="fileToOpen" accept=".csmx"/>
+            `,
+            buttons: [
+                {text: "Open", onclick: function(){
+                    alert("TODO : Open file");
+                    fileModal.kill();
+                }},
+            ]
+        })
+    })
 })
