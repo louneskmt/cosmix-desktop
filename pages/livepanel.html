@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>LivePanel</title>
-    <link rel="stylesheet" href="../styles/main.css" />
-    <link rel="stylesheet" href="../styles/tab.css" />
-    <link rel="stylesheet" href="../styles/graph.css" />
-    <!-- UTILE?? <script src="/socket.io/socket.io.js"></script> -->
-    <script src="../js/main.js"></script>
-    <script src="../js/snap-svg.js"></script>
-    <script src="../js/livepanel.js"></script>
-    
-</head>
-<body>
-    <div class="bodyContainer noPad">
-        <div class="closeButtons">
-            <div id="closeButton" onclick="window.close();"></div>
-            <div id="minifyButton" onclick="hide()"></div>
-            <div id="fullscreenButton" onclick="return false;"></div>
-        </div>
-        <aside class="padContainer big posRelative floatLeft">
-            <header>
-                <div class="backButton sprite-backArrow"
-                onclick="openWindow(`/pages/dashboard.html`)"></div>
-                <h1>LivePanel</h1>
-            </header>
-            
-            <section class="tabDisplay">
-                <div class="tab marTop10" id="speedTab" data-tab="speed">
-                    <h2>Speed</h2>
-                    <div class="graph marTop10" id="speedGraph"></div>
-                    <h3 class="math">x&#772 = <span id="average">--</span> <label>
-                        &cap;/s</label></h3>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>LivePanel</title>
+        <link rel="stylesheet" href="../styles/main.css" />
+        <link rel="stylesheet" href="../styles/tab.css" />
+        <link rel="stylesheet" href="../styles/graph.css" />
+        <!-- UTILE?? <script src="/socket.io/socket.io.js"></script> -->
+        <script src="../js/main.js"></script>
+        <script src="../js/snap-svg.js"></script>
+        <script src="../js/livepanel.js"></script>
+    </head>
+    <body>
+        <div class="bodyContainer noPad">
+            <div class="closeButtons">
+                <div id="closeButton" onclick="window.close();"></div>
+                <div id="minifyButton" onclick="hide()"></div>
+                <div id="fullscreenButton" onclick="return false;"></div>
+            </div>
+            <aside class="padContainer big posRelative floatLeft">
+                <header>
+                    <div class="backButton sprite-backArrow"
+                        onclick="openWindow(`/pages/dashboard.html`)"></div>
+                    <h1>LivePanel</h1>
+                </header>
+
+                <section class="tabDisplay">
+                    <div class="tab marTop10" id="speedTab" data-tab="speed">
+                        <h2>Speed</h2>
+                        <div class="graph marTop10" id="speedGraph"></div>
+                        <h3 class="math">x&#772 = <span id="average">--</span>
+                            <label>
+                                &cap;/s</label></h3>
                     </div>
                     <div class="marTop10 tab" id="measurementsTab" data-tab="measurements">
                         <h2>Measurements</h2>
@@ -41,10 +41,13 @@
                     </div>
                     <div class="marTop10 tab" id="otherTab" data-tab="other">
                         <h2>Other</h2>
+                        <div id="map"></div>
+
                     </div>
                     <div class="marTop10 tab currentTab" id="statusTab" data-tab="status">
                         <h2>Status</h2>
-                        <p>Status : <span id="connectionStatus"></span> <span id="connectionStatusDisplay"></span></p>
+                        <p>Status : <span id="connectionStatus"></span> <span
+                                id="connectionStatusDisplay"></span></p>
                         <p>Ping : <span id="latency">----</span></p>
                         <p>Server's IP : <span id="serverIP">----</span></p>
                     </div>
@@ -53,21 +56,23 @@
             <aside class="right tar">
                 <table class="tableTabs">
                     <tr>
-                        <td id="statusDiv" class="tabSelector selected" data-tab="status">
+                        <td id="statusDiv" class="tabSelector selected"
+                            data-tab="status">
                             <h5>Status</h5>
                             <h2 id="currentStatus">OFF</h2>
                         </td>
                     </tr>
                     <tr>
-                        <td id="measurementsDiv" class="tabSelector" data-tab="measurements">
+                        <td id="measurementsDiv" class="tabSelector"
+                            data-tab="measurements">
                             <div class="posRelative floatLeft">
                                 <h3 class="marTop5 marBottom5 colGreen"
-                                id="eventsC1">----</h3>
+                                    id="eventsC1">----</h3>
                                 <h3 class="marTop5 marBottom5 colOrange"
-                                id="eventsC2">----</h3>
+                                    id="eventsC2">----</h3>
                                 <h6 class="small marTop5">Total</h6>
                                 <h3 class="marBottom5 colBlack"
-                                id="totalEvents">----</h3>
+                                    id="totalEvents">----</h3>
                             </div>
                             <div class="posRelative floatRight">
                                 <h5>Measurements</h5>
@@ -93,8 +98,7 @@
                     </tr>
                 </table>
             </aside>
-            
         </div>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKdyPpoV7jrfk-QlyLWHkFMfLqfIjDSPQ&callback=initMap" async defer></script>
     </body>
-    
-    </html>
+</html>

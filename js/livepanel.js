@@ -37,6 +37,7 @@ $(document).ready(function () {
             other: $('#otherTab'),
             status: $('#statusTab')
         },
+        map: $('#map'),
 
     };
 
@@ -264,4 +265,12 @@ $(document).ready(function () {
     }, 1000);
 
     console.log(socket);
+
+    var map;
+    function initMap() {
+        map = new google.maps.Map($(DOM.map), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        });
+    }
 });
